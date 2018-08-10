@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {Route, Link, Switch, withRouter} from "react-router-dom";
 import Test from "../Test/Test";
-
+import LoginIn from "../LoginIn/LoginIn";
 import "../../test.css";
 
 class Header extends React.Component {
@@ -25,10 +25,11 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        {/* <Header /> */}
+        <LoginIn />
         <Switch>
-          <Route exact path="/" component={() => <div>Index</div>} />
-          <Route path="/test" component={this.renderTest} />
+          {/* <Route exact path="/" component={() => <div>Index</div>} /> */}
+          {/* <Route path="/test" component={this.renderTest} /> */}
         </Switch>
       </div>
     );

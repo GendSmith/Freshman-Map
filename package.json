@@ -12,6 +12,7 @@
     "build:server": "webpack --config build/webpack.server.prod.js"
   },
   "dependencies": {
+    "antd-mobile": "^2.2.3",
     "express": "^4.16.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
