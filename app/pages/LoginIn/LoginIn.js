@@ -3,6 +3,8 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 
+import "./LoginIn.css";
+
 class LoginIn extends React.Component {
   constructor(props) {
     super(props);
@@ -13,14 +15,14 @@ class LoginIn extends React.Component {
 
   render() {
     return (
-      <div style={styles.container}>
+      <div className="page-container">
         <div style={{width: "60%", marginLeft: "20%"}}>
           学号 <input style={{border: "groove"}} />
         </div>
         <div style={{width: "60%", marginLeft: "20%"}}>
           姓名 <input style={{border: "groove"}} />
         </div>
-        <img  style={{width:"100%"}} src = {require("http://img07.tooopen.com/images/20170316/tooopen_sy_201956178977.jpg")}/>
+        {/* <img  style={{width:"100%"}} src = {require("http://img07.tooopen.com/images/20170316/tooopen_sy_201956178977.jpg")}/> */}
       </div>
     );
   }
@@ -28,7 +30,7 @@ class LoginIn extends React.Component {
 
 const styles = {
   container: {
-    background: require("http://img07.tooopen.com/images/20170316/tooopen_sy_201956178977.jpg")
+    // background: require("http://img07.tooopen.com/images/20170316/tooopen_sy_201956178977.jpg")
   }
 };
 
