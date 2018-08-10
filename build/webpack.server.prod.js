@@ -6,10 +6,10 @@ const UglifyPlugin = require("uglifyjs-webpack-plugin");
 
 const config = {
   mode: "production",
-  entry: path.join(__dirname, "../cli/prod.js"),
+  entry: path.join(__dirname, "../server/prod.js"),
   output: {
     filename: "bundle.js",
-    path: path.join(__dirname, "../dist/ssr/")
+    path: path.join(__dirname, "../dist/server/")
   },
   node: {
     __dirname: true
@@ -44,6 +44,17 @@ const config = {
             options: {}
           },
           "css-loader"
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192
+            }
+          }
         ]
       }
     ]
