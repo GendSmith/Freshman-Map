@@ -31,9 +31,13 @@ class TaskIntro extends React.Component {
           <br />
         </p>
         <div>
-          <img src={btnok} style={styles.button}  onClick = {()=>{
-              this.props.history.push("/login")
-          }} />
+          <img
+            src={btnok}
+            style={styles.button}
+            onClick={() => {
+              this.props.history.push("/login");
+            }}
+          />
         </div>
       </div>
     );
