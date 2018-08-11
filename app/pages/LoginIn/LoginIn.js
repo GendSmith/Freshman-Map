@@ -43,7 +43,13 @@ class LoginIn extends React.Component {
         </div>
         <div>
           <img src={btnok} style={{...styles.button, marginLeft: "25%"}} />
-          <img src={btntask} style={{...styles.button, marginLeft: "5%"}} />
+          <img
+            src={btntask}
+            style={{...styles.button, marginLeft: "5%"}}
+            onClick={() => {
+              this.props.history.push("/taskintro");
+            }}
+          />
         </div>
       </div>
     );

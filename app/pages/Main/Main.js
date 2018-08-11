@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Route, Link, Switch, withRouter} from "react-router-dom";
-import Test from "../Test/Test";
+import TaskIntro from "../TaskIntro/TaskIntro";
 import LoginIn from "../LoginIn/LoginIn";
-import "../../test.css";
+
 
 class Header extends React.Component {
   render() {
@@ -25,11 +25,10 @@ class Main extends React.Component {
   render() {
     return (
       <div style = {{width:"100%",height:"100%"}}>
-        {/* <Header /> */}
         <LoginIn />
         <Switch>
-          {/* <Route exact path="/" component={() => <div>Index</div>} /> */}
-          {/* <Route path="/test" component={this.renderTest} /> */}
+          <Route path = "/loginin" component = {LoginIn}/>
+          <Route path = "/taskintro" component = {TaskIntro}/>
         </Switch>
       </div>
     );
