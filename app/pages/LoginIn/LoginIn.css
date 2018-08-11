@@ -1,6 +1,14 @@
 .page-container {
-    /* background-color: yellow; */
-    width: 100%;
+    background-color: red;
     height: 100%;
-    background-image: url("http://img07.tooopen.com/images/20170316/tooopen_sy_201956178977.jpg");
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+   /* background-image: url("http://img07.tooopen.com/images/20170316/tooopen_sy_201956178977.jpg");*/
+   background-image: url("../../assets/img/LoginIn/background.png");
+   background-repeat: no-repeat;
+  background-size: 100% 100%;
+  
 }
+
