@@ -1,7 +1,7 @@
 import React from "react";
-import title from "../../assets/img/LoginIn/1tasktitle.png";
-import btnok from "../../assets/img/LoginIn/1btn_ok.png";
-import "../LoginIn/LoginIn.css";
+import title from "../../assets/img/Login/1tasktitle.png";
+import btnok from "../../assets/img/Login/1btn_ok.png";
+import "../Login/Login.css";
 class TaskIntro extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +32,7 @@ class TaskIntro extends React.Component {
         </p>
         <div>
           <img src={btnok} style={styles.button}  onClick = {()=>{
-              this.props.history.push("/loginin")
+              this.props.history.push("/login")
           }} />
         </div>
       </div>

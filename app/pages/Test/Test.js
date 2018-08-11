@@ -1,6 +1,6 @@
-import React from "react";
+import React from "../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react";
 import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
+import {connect} from "../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux";
 import testActionCreator from "./TestActions";
 
 import "../../test.css";
