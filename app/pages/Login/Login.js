@@ -1,20 +1,25 @@
 import React from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {withRouter} from  "react-router-dom";
+import {withRouter} from "react-router-dom";
 import title from "../../assets/img/Login/1title.png";
 import btnok from "../../assets/img/Login/1btn_ok.png";
 import btntask from "../../assets/img/Login/1btn_task.png";
 import "./Login.css";
-
+import loginActionCreator from "./LoginActions";
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       index: "",
-      name:"",
-      schoolID:""
+      name: "",
+      schoolID: ""
     };
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit() {
+    this.props.loginAction.fetchLoginData(this.state);
   }
 
   render() {
@@ -27,21 +32,28 @@ class Login extends React.Component {
         <div style={{marginTop: "50px"}}>
           <div style={{width: "60%", marginLeft: "20%"}}>
             <p style={{color: "white"}}>
-              姓名 <input style={styles.input} type = "text" value = {this.state.name}
-               onChange = {(e)=>{
-                  this.setState({name:e.target.value});
-                  
-              }}/>
+              姓名{" "}
+              <input
+                style={styles.input}
+                type="text"
+                value={this.state.name}
+                onChange={(e) => {
+                  this.setState({name: e.target.value});
+                }}
+              />
             </p>
           </div>
           <div style={{width: "60%", marginLeft: "20%"}}>
             <p style={{color: "white"}}>
               学号 {"   "}
-              <input style={styles.input} type = "text" value = {this.state.schoolID}
-              onChange = {(e)=>{
-                  this.setState({schoolID:e.target.value});
+              <input
+                style={styles.input}
+                type="text"
+                value={this.state.schoolID}
+                onChange={(e) => {
+                  this.setState({schoolID: e.target.value});
                   //console.log(this.state)
-              }}
+                }}
               />
             </p>
           </div>
@@ -53,9 +65,14 @@ class Login extends React.Component {
           </div>
         </div>
         <div>
-          <img src={btnok} style={{...styles.button, marginLeft: "25%"}} onClick = {()=>{
-              console.log(this.state)
-          }}/>
+          <img
+            src={btnok}
+            style={{...styles.button, marginLeft: "25%"}}
+            onClick={() => {
+              console.log(this.state);
+              this.onSubmit();
+            }}
+          />
           <img
             src={btntask}
             style={{...styles.button, marginLeft: "5%"}}
@@ -86,4 +103,21 @@ const styles = {
   }
 };
 
-export default withRouter(Login);
+const mapStateToProps = (state) => {
+  const {loginReducer} = state;
+  return {
+    loginReducer
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  const loginAction = bindActionCreators(loginActionCreator, dispatch);
+  return {
+    loginAction
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Login));

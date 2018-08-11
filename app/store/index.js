@@ -1,12 +1,16 @@
-import TestReducer from "../pages/Test/TestReducer";
-import {watchTestSaga} from "../pages/Test/TestSagas";
+
+import loginReducer from "../pages/Login/LoginReducer";
+import {watchLoginSaga} from "../pages/Login/LoginSagas";
 import Store from "./store";
 
+
 const reducers = {
-  testReducer: TestReducer
+  
+  LoginReducer:loginReducer
 };
 
-const sagas = [watchTestSaga];
+const sagas = [watchLoginSaga];
+
 
 export default (initialState = {}) => () =>
   Store(initialState, reducers, sagas);

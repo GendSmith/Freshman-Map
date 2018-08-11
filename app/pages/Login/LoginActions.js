@@ -6,8 +6,9 @@ export const DID_FETCH_LOGIN_DATA = "DID_FETCH_LOGIN_DATA";
 
 export const CLEAR = "CLEAR";
 
-export const fetchLoginData = () =>({
-    type:FETCH_LOGIN_DATA
+export const fetchLoginData = (params) =>({
+    type:FETCH_LOGIN_DATA,
+    payload:params
 });
 
 export const willFetchLoginData = ()=>({
@@ -16,7 +17,7 @@ export const willFetchLoginData = ()=>({
 
 export const didFetchLoginData = (params) =>({
     type:didFetchTestData,
-    playload:params
+    payload:params
 });
 
 export const clear = (params) =>({
