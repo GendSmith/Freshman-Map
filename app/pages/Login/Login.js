@@ -13,13 +13,28 @@ class Login extends React.Component {
     this.state = {
       index: "",
       name: "",
-      schoolID: ""
+      schoolID: "",
+      college: "物理学院"
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit() {
     this.props.loginAction.fetchLoginData(this.state);
+    const res =  this.props.loginAction.didFetchLoginData();
+    console.log("login result:")
+    console.log(res);
+
+    return;
+    
+    const college = this.state.college;
+    if (college == "物理学院") {
+      this.props.history.push("/physics");
+    } else if (college == "心理学系") {
+      this.props.history.push("/psychology");
+    } else {
+      console.log("暂时不支持这个学院");
+    }
   }
 
   render() {
