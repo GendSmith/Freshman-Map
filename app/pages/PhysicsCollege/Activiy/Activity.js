@@ -19,8 +19,8 @@ class Activity extends React.Component {
 
         <div>
           <img
-            onClick = {(e)=>{
-                console.log("activity.js btn pressed");
+            onClick={(e) => {
+              console.log("activity.js btn pressed");
             }}
             style={styles.nextBtn}
             src={require("../../../assets/img/HomePage/0btn_next.png")}

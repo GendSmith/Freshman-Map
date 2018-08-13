@@ -17,7 +17,7 @@ function* fetchLoginSaga(params) {
       "POST",
       params.payload
     );
-   // console.log(message);
+    // console.log(message);
     yield put(didFetchLoginData(message));
   } catch (err) {
     console.log(err);

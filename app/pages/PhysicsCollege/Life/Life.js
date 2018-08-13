@@ -13,11 +13,13 @@ class Life extends React.Component {
   render() {
     return (
       <div className="life-page-container">
-        <div style = {styles.title}>
+        <div style={styles.title}>
           <div>衣、食、住、行，</div>
-          <div>难离。</div><br/>
+          <div>难离。</div>
+          <br />
           <div>身、心健康，</div>
-          <div>勿轻。</div><br/>
+          <div>勿轻。</div>
+          <br />
           <div>网络、安全，</div>
           <div>不忘。</div>
         </div>
@@ -39,7 +41,7 @@ const styles = {
   title: {
     position: "absolute",
     marginLeft: "35%",
-   //textAlign:"center",
+    //textAlign:"center",
     marginTop: "30%",
     opacity: "0.7"
   },

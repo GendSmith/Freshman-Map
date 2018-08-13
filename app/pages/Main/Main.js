@@ -16,10 +16,10 @@ class Main extends React.Component {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/taskintro" component={TaskIntro} />
-          <Route path="/physics/activity" component = {PhysicsActivity}/>
-          <Route path="/physics/life" component = {PhysicsLife}/>
-          <Route path = "/physics/famous" component={PhysicsFamous}/>
-          <Route path="/physics/study" component={PhysicsStudy}/>
+          <Route path="/physics/activity" component={PhysicsActivity} />
+          <Route path="/physics/life" component={PhysicsLife} />
+          <Route path="/physics/famous" component={PhysicsFamous} />
+          <Route path="/physics/study" component={PhysicsStudy} />
         </Switch>
       </div>
     );

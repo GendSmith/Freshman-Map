@@ -13,12 +13,12 @@ class Study extends React.Component {
   render() {
     return (
       <div className="study-page-container">
-        <div style = {styles.title}>
+        <div style={styles.title}>
           <div>大学期间，</div>
-          <div>陪伴我们最多的就是学习</div><br/>
+          <div>陪伴我们最多的就是学习</div>
+          <br />
           <div>课室、图书馆、实验室等，</div>
           <div>将会是你储备知识的加油站。</div>
-
         </div>
         <div>
           <img
@@ -38,7 +38,7 @@ const styles = {
   title: {
     position: "absolute",
     marginLeft: "25%",
-   //textAlign:"center",
+    //textAlign:"center",
     marginTop: "30%",
     opacity: "0.7"
   },
