@@ -21,12 +21,7 @@ class Login extends React.Component {
 
   onSubmit() {
     this.props.loginAction.fetchLoginData(this.state);
-    const res =  this.props.loginAction.didFetchLoginData();
-    console.log("login result:")
-    console.log(res);
-
     return;
-    
     const college = this.state.college;
     if (college == "物理学院") {
       this.props.history.push("/physics");
@@ -38,6 +33,10 @@ class Login extends React.Component {
   }
 
   render() {
+    const {loginRes} = this.props.loginReducer;
+    if(loginRes.CODE==1002){
+      console.log("登录成功")
+    }
     return (
       <div className="page-container">
         <img

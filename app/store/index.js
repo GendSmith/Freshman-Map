@@ -3,7 +3,7 @@ import {watchLoginSaga} from "../pages/Login/LoginSagas";
 import Store from "./store";
 
 const reducers = {
-  LoginReducer: loginReducer
+  loginReducer
 };
 
 const sagas = [watchLoginSaga];
