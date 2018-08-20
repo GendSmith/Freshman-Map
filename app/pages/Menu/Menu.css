@@ -1,0 +1,43 @@
+.menu-page-block1 {
+    height: 110px;
+    width: 108%;
+    margin: 0 -20px 0 -20px;
+    background-image: url("../../assets//img/Menu/rectangle1.png");
+}
+.menu-page-block2 {
+    height: 110px;
+    width: 108%;
+    margin: 0 -20px 0 -20px;
+    background-image: url("../../assets//img/Menu/rectangle2.png");
+}
+.menu-page-block3 {
+    height: 110px;
+    width: 108%;
+    margin: 0 -20px 0 -20px;
+    background-image: url("../../assets//img/Menu/rectangle3.png");
+}
+.menu-page-block4 {
+    height: 110px;
+    width: 108%;
+    margin: 0 -20px 0 -20px;
+    background-image: url("../../assets//img/Menu/rectangle4.png");
+}
+
+.small-img {
+    display: inline-block;
+    width:30%;
+    height: 50px;
+    padding-top: 30px;
+    padding-left: 50px;
+}
+
+.small-text {
+    float: right;
+    right: 0;
+    width: 40%;
+    margin-top: 30px;
+    text-align: right;
+    padding-right: 50px;
+    font-size: 28px;
+    opacity: 0.6;
+}

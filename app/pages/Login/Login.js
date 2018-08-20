@@ -18,7 +18,6 @@ class Login extends React.Component {
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
-
   onSubmit() {
     this.props.loginAction.fetchLoginData(this.state);
     return;
@@ -35,7 +34,8 @@ class Login extends React.Component {
   render() {
     const {loginRes} = this.props.loginReducer;
     if(loginRes.CODE==1002){
-      console.log("登录成功")
+      console.log("登录成功");
+      this.props.history.push("/menu");
     }
     return (
       <div className="page-container">
