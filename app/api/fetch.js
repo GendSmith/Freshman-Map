@@ -4,7 +4,6 @@ const BASE_URL = DEBUG ? "" : "";
 
 const request = (url, method, body, type) => {
   let options = {
-    credentials: "same-origin",
     method
   };
 
@@ -14,6 +13,7 @@ const request = (url, method, body, type) => {
       headers: {
         "Content-Type": "multipart/form-data"
       },
+      credentials: "inlcude",
       body
     };
   } else {
@@ -23,6 +23,7 @@ const request = (url, method, body, type) => {
         Accept: "application/json",
         "Content-Type": "application/json;charset=utf-8"
       },
+      credentials: "include",
       body: JSON.stringify(body)
     };
   }
