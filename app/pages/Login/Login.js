@@ -17,25 +17,20 @@ class Login extends React.Component {
       college: "物理学院"
     };
     this.onSubmit = this.onSubmit.bind(this);
+    //console.log(this.props);
   }
   onSubmit() {
     this.props.loginAction.fetchLoginData(this.state);
-    return;
-    const college = this.state.college;
-    if (college == "物理学院") {
-      this.props.history.push("/physics");
-    } else if (college == "心理学系") {
-      this.props.history.push("/psychology");
-    } else {
-      console.log("暂时不支持这个学院");
-    }
   }
 
   render() {
     const {loginRes} = this.props.loginReducer;
-    if(loginRes.CODE==1002){
+    if (loginRes.CODE == 1002) {
       console.log("登录成功");
+      this.props.loginReducer.loginRes = {};
       this.props.history.push("/menu");
+    } else {
+      console.log("登录失败");
     }
     return (
       <div className="page-container">
@@ -65,6 +60,7 @@ class Login extends React.Component {
                 type="text"
                 value={this.state.schoolID}
                 onChange={(e) => {
+                  console.log(e.target.value);
                   this.setState({schoolID: e.target.value});
                   //console.log(this.state)
                 }}

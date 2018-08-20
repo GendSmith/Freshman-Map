@@ -4,6 +4,7 @@ import {HashRouter as Router} from "react-router-dom";
 import {Provider} from "react-redux";
 import Store from "./store";
 import Main from "./pages/Main/Main";
+import {CookiesProvider} from "react-cookie";
 
 const MOUNT_NODE = document.getElementById("app");
 const INITIAL_STATE = window.INITIAL_STATE || {};
