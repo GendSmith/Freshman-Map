@@ -1,0 +1,12 @@
+.famous-page-container {
+    height: 100%;
+    width: 108%;
+    margin: 0 -20px 0 -20px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    background-image: url("../../../assets/img/HomePage/3Famous.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  
