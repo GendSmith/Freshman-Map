@@ -18,8 +18,6 @@ class AuthRouter extends React.Component {
     this.props.authAction.fetchAuthData();
   }
 
-  componentWillReceiveProps() {}
-
   render() {
     const loginurl = "/login";
     const pathname = this.props.location.pathname;

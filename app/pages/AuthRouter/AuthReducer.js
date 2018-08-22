@@ -6,7 +6,7 @@ let INITIAL_STATE = {
 const AuthReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case DID_FETCH_AUTH_DATA:
-      return Object.assign({}, state, {AuthRes: action.payload});
+      return Object.assign({}, state, {AuthRes: {action}});
     case CLEAR:
       return Object.assign({});
     default:

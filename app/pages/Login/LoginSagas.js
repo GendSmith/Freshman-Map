@@ -1,14 +1,11 @@
 import {take, fork, call, put} from "redux-saga/effects";
-import axios from "axios";
 import {
   FETCH_LOGIN_DATA,
   willFetchLoginData,
   didFetchLoginData
 } from "./LoginActions";
 import fetch from "../../api/fetch";
-import {func} from "prop-types";
 
-axios.defaults.withCredentials = true;
 
 function* fetchLoginSaga(params) {
   try {

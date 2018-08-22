@@ -11,6 +11,7 @@ import Activity from "../Card/Activiy/Activity";
 import Life from "../Card/Life/Life";
 import Famous from "../Card/Famous/Famous";
 import Study from "../Card/Study/Study";
+import Card from "../Card/Card";
 
 class Main extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class Main extends React.Component {
           <Route path="/card/life" component={Life} />
           <Route path="/card/famous" component={Famous} />
           <Route path="/card/study" component={Study} />
+          <Route path="/card" component={Card} />
         </Switch>
       </div>
     );

@@ -25,7 +25,9 @@ class Login extends React.Component {
 
   render() {
     const {loginRes} = this.props.loginReducer;
-    if (loginRes.CODE == 1002) {
+    console.log("loginres");
+    console.log(loginRes);
+    if (loginRes && loginRes.CODE == 200) {
       console.log("登录成功");
       this.props.loginReducer.loginRes = {};
       this.props.history.push("/menu");

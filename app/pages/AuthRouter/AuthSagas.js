@@ -12,6 +12,12 @@ function* fetchAuthSaga() {
     yield put(willFetchAuthData());
     const message = yield call(fetch, "http://localhost:6699/check", "GET");
     console.log(message);
+    // if(message.payload,CODE==200){
+    //   localStorage.setItem("id", message[0].id);
+    //   localStorage.setItem("college", message[0].college);
+    // }
+    console.log("000");
+    console.log(message[0]);
     yield put(didFetchAuthData(message));
   } catch (err) {
     console.log(err);
