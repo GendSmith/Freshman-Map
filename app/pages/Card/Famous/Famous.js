@@ -19,11 +19,12 @@ class Famous extends React.Component {
           <div>细品红砖绿瓦的建筑。</div>
         </div>
 
-        <div>
+        <div
+          onClick={(e) => {
+            this.props.history.push("/card/famous/detail");
+          }}
+        >
           <img
-            onClick={(e) => {
-              console.log("famous.js btn pressed");
-            }}
             style={styles.nextBtn}
             src={require("../../../assets/img/HomePage/0btn_next.png")}
           />
@@ -48,4 +49,4 @@ const styles = {
   }
 };
 
-export default Famous;
+export default withRouter(Famous);

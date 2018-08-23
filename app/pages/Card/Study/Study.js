@@ -21,11 +21,12 @@ class Study extends React.Component {
           <div>课室、图书馆、实验室等，</div>
           <div>将会是你储备知识的加油站。</div>
         </div>
-        <div>
+        <div
+          onClick={(e) => {
+            this.props.history.push("/card/study/detail");
+          }}
+        >
           <img
-            onClick={(e) => {
-              console.log("study.js btn pressed");
-            }}
             style={styles.nextBtn}
             src={require("../../../assets/img/HomePage/0btn_next.png")}
           />
@@ -51,4 +52,4 @@ const styles = {
   }
 };
 
-export default Study;
+export default withRouter(Study);

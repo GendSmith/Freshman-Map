@@ -3,14 +3,14 @@ import React from "react";
 import {Carousel, WingBlank} from "antd-mobile";
 
 class Card extends React.Component {
-
-    constructor(props) {
-        super(props);
-        console.log(this.props.location);
-    }
+  constructor(props) {
+    super(props);
+    this.pointInfo = this.props.location.state;
+    console.log(this.props.location.state);
+  }
   state = {
     data: ["1", "2", "3"],
-    imgHeight: 176
+    imgHeight: 178
   };
   componentDidMount() {
     // simulate img loading
@@ -26,7 +26,7 @@ class Card extends React.Component {
   }
   render() {
     return (
-      <WingBlank style = {{touchAction:"none"}}>
+      <WingBlank style={{touchAction: "none"}}>
         <Carousel
           className="space-carousel"
           style={{
@@ -39,19 +39,19 @@ class Card extends React.Component {
           slideWidth={0.8}
           autoplay
           infinite
-          beforeChange={(from, to) =>
-            console.log(`slide from ${from} to ${to}`)
-          }
+          // beforeChange={(from, to) =>
+          //   console.log(`slide from ${from} to ${to}`)
+          // }
           afterChange={(index) => this.setState({slideIndex: index})}
         >
-          {this.state.data.map((val, index) => (
+          {this.pointInfo.pointInfo.map((item) => (
             <div
-              key={val}
+              key={item.id}
               style={{
                 display: "block",
                 position: "relative",
                 top: this.state.slideIndex === index ? -10 : 0,
-                height: this.state.imgHeight,
+                height: "200px",
                 boxShadow: "2px 1px 1px rgba(0, 0, 0, 0.2)"
               }}
             >

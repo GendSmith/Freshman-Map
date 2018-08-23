@@ -6,8 +6,6 @@ import {
 } from "./MenuActions";
 import fetch from "../../api/fetch";
 
-
-
 function* fetchMenuSaga(params) {
   try {
     console.log("call fetchmenusaga");
@@ -18,7 +16,7 @@ function* fetchMenuSaga(params) {
       "POST",
       params.payload
     );
-    
+
     yield put(didFetchMenuData(message));
   } catch (err) {
     console.log(err);

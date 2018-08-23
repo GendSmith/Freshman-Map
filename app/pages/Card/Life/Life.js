@@ -23,11 +23,12 @@ class Life extends React.Component {
           <div>网络、安全，</div>
           <div>不忘。</div>
         </div>
-        <div>
+        <div
+          onClick={(e) => {
+            this.props.history.push("/card/life/detail");
+          }}
+        >
           <img
-            onClick={(e) => {
-              console.log("life.js btn pressed");
-            }}
             style={styles.nextBtn}
             src={require("../../../assets/img/HomePage/0btn_next.png")}
           />
@@ -53,4 +54,4 @@ const styles = {
   }
 };
 
-export default Life;
+export default withRouter(Life);

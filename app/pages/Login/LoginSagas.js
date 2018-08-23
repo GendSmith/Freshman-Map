@@ -6,7 +6,6 @@ import {
 } from "./LoginActions";
 import fetch from "../../api/fetch";
 
-
 function* fetchLoginSaga(params) {
   try {
     console.log("call fetchloginsaga");

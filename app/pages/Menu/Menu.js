@@ -25,12 +25,9 @@ class Menu extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    //hashHistory.push("/card");
-    this.props.history.push(
-
-      { pathname: "/card", state: { name:"gendsmith" } }
-    );
+  handleClick(url) {
+    const {menuRes} = this.props.menuReducer;
+    this.props.history.push({pathname: url, state: menuRes});
   }
 
   render() {
@@ -40,7 +37,12 @@ class Menu extends React.Component {
           <h1>选择菜单</h1>
         </div>
 
-        <div className="menu-page-block1" onClick={this.handleClick}>
+        <div
+          className="menu-page-block1"
+          onClick={(e) => {
+            this.handleClick("/card/study");
+          }}
+        >
           <div className="small-img">
             <img src={study} style={{height: "50px", marginLeft: "10px"}} />
           </div>
@@ -50,7 +52,7 @@ class Menu extends React.Component {
         <div
           className="menu-page-block2"
           onClick={(e) => {
-            this.props.history.push("/card/life");
+            this.handleClick("/card/life");
           }}
         >
           <div className="small-img">
@@ -62,7 +64,7 @@ class Menu extends React.Component {
         <div
           className="menu-page-block3"
           onClick={(e) => {
-            this.props.history.push("/card/famous");
+            this.handleClick("/card/famous");
           }}
         >
           <div className="small-img">
@@ -74,7 +76,7 @@ class Menu extends React.Component {
         <div
           className="menu-page-block4"
           onClick={(e) => {
-            this.props.history.push("/card/activity");
+            this.handleClick("/card/activity");
           }}
         >
           <div className="small-img">

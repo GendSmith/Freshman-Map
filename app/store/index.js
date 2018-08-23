@@ -13,7 +13,7 @@ const reducers = {
   menuReducer
 };
 
-const sagas = [watchLoginSaga, watchAuthSaga,watchMenuSaga];
+const sagas = [watchLoginSaga, watchAuthSaga, watchMenuSaga];
 
 export default (initialState = {}) => () =>
   Store(initialState, reducers, sagas);

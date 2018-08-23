@@ -1,7 +1,7 @@
 import React from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
+import {withRouter, Route} from "react-router-dom";
 import "./Activity.css";
 class Activity extends React.Component {
   constructor(props) {
@@ -9,6 +9,7 @@ class Activity extends React.Component {
     this.state = {
       pointInfo: []
     };
+    this.pointInfo = this.props.location.state;
   }
 
   componentWillMount(props) {}
@@ -21,11 +22,14 @@ class Activity extends React.Component {
           <div>丰富你的大学生活</div>
         </div>
 
-        <div>
+        <div
+          onClick={(e) => {
+            console.log("onclick");
+            this.props.history.push("/card/activity/detail");
+            //console.log(this.props.history)
+          }}
+        >
           <img
-            onClick={(e) => {
-              console.log("activity.js btn pressed");
-            }}
             style={styles.nextBtn}
             src={require("../../../assets/img/HomePage/0btn_next.png")}
           />
@@ -50,4 +54,4 @@ const styles = {
   }
 };
 
-export default Activity;
+export default withRouter(Activity);
