@@ -20,20 +20,20 @@ class Main extends React.Component {
       <div style={{width: "100%", height: "100%"}}>
         <AuthRouter />
         <Switch>
-          <Route path="/menu" component={Menu} />
-          <Route path="/login" component={Login} />
-          <Route path="/taskintro" component={TaskIntro} />
+          <Route exact path="/menu" component={Menu} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/taskintro" component={TaskIntro} />
 
-          <Route path="/card/life/detail" component={LifeDetail} />
-          <Route path="/card/famous/detail" component={FamousDetail} />
-          <Route path="/card/study/detail" component={StudyDetail} />
-          <Route path="/card/activity/detail" component={ActivityDetail} />
+          <Route exact path="/card/life/detail" component={LifeDetail} />
+          <Route exact path="/card/famous/detail" component={FamousDetail} />
+          <Route exact path="/card/study/detail" component={StudyDetail} />
+          <Route exact path="/card/activity/detail" component={ActivityDetail} />
 
-          <Route path="/card/life" component={Life} />
-          <Route path="/card/famous" component={Famous} />
-          <Route path="/card/study" component={Study} />
-
+          <Route exact path="/card/life" component={Life} />
+          <Route exact path="/card/famous" component={Famous} />
+          <Route exact path="/card/study" component={Study} />
           <Route exact path="/card/activity" component={Activity} />
+        
         </Switch>
       </div>
     );

@@ -47,6 +47,7 @@ const config = {
       inject: "body"
     })
   ],
+
   devtool: "source-map"
 };
 
