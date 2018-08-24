@@ -1,4 +1,4 @@
-const DEBUG = true;
+const DEBUG = false;
 
 const PORT_FRONTEND = 8887;
 

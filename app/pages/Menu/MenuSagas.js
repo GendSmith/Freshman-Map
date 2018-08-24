@@ -12,7 +12,7 @@ function* fetchMenuSaga(params) {
     yield put(willFetchMenuData());
     const message = yield call(
       fetch,
-      "http://localhost:6699/point",
+      "http://localhost:6700/point",
       "POST",
       params.payload
     );

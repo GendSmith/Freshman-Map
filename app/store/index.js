@@ -4,16 +4,19 @@ import authReducer from "../pages/AuthRouter/AuthReducer";
 import {watchAuthSaga} from "../pages/AuthRouter/AuthSagas";
 import menuReducer from "../pages/Menu/MenuReducer";
 import {watchMenuSaga} from "../pages/Menu/MenuSagas";
+import ADetailReducer from "../pages/Card/Activiy/Detail/ActivityDetailReducer";
+import {watchADetailSaga} from "../pages/Card/Activiy/Detail/ActivityDetailSagas";
 
 import Store from "./store";
 
 const reducers = {
   loginReducer,
   authReducer,
-  menuReducer
+  menuReducer,
+  ADetailReducer
 };
 
-const sagas = [watchLoginSaga, watchAuthSaga, watchMenuSaga];
+const sagas = [watchLoginSaga, watchAuthSaga, watchMenuSaga, watchADetailSaga];
 
 export default (initialState = {}) => () =>
   Store(initialState, reducers, sagas);

@@ -1,6 +1,6 @@
 const {DEBUG} = require("../../config");
-
-const BASE_URL = DEBUG ? "" : "";
+console.log("debug" + DEBUG);
+const BASE_URL = DEBUG ? "":"";
 
 const request = (url, method, body, type) => {
   let options = {

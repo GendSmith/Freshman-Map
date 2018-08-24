@@ -1,17 +1,22 @@
 import React from "react";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import {Carousel, WingBlank} from "antd-mobile";
-import activityImg from "../../../../assets/img/HomePage/activity.png";
-import {Map, Marker, NavigationControl, InfoWindow} from "react-bmap";
 import RED_POINT_IMG from "../../../../assets/img/Task/4locat.png";
 import RED_BUTTON_IMG from "../../../../assets/img/Task/4btn_locat.png";
+import Toast from "../../../../assets/img/Toast/定位成功.png";
+import ToastYes from "../../../../assets/img/Toast/是.png";
+import ADetailCreator from "./ActivityDetailActions";
 
 import "./Detail.css";
+
 class ActivityDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showToast: false
+    };
     console.log(this.props);
     this.pointInfo = this.props.menuReducer.menuRes.pointInfo;
     this.progress = this.props.menuReducer.menuRes.progress;
@@ -21,13 +26,35 @@ class ActivityDetail extends React.Component {
     this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
-  handleButtonClick() {
+  handleButtonClick(item) {
+    const point = {
+      lng: item.lng,
+      lat: item.lat
+    };
+    this.setState({
+      showToast: true
+    });
     const BMap = window.BMap;
+    const map = new BMap.Map("");
     const geolocation = new BMap.Geolocation();
     geolocation.getCurrentPosition(
       function(r) {
         if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-          alert("您的位置：" + r.point.lng + "," + r.point.lat);
+          const distance = map.getDistance(r.point, point);
+          const params = {
+            id: item.id,
+            type: item.type,
+            pointName: item.img_url,
+            lng: item.lng,
+            lat: item.lat
+          };
+          if (distance < 50) {
+            this.props.ADetailAction.fetchADetailData(params);
+          } else {
+            //alert 打卡失败
+          }
+          console.log("distance:" + distance);
+          //  alert("您的位置：" + r.point.lng + "," + r.point.lat);
         } else {
           if (this.getStatus == BMAP_STATUS_PERMISSION_DENIED) {
             alert("请开启位置权限～");
@@ -63,69 +90,126 @@ class ActivityDetail extends React.Component {
   render() {
     return (
       <div className="activity-detail-page-container">
-        <WingBlank>
-          <Carousel
-            removeClippedSubviews={false}
+        <div
+          style={{
+            position: "fixed",
+            zIndex: "1",
+            marginTop: "30%",
+            display: this.state.showToast ? "block" : "none"
+          }}
+          onClick={(e) => {
+            this.setState({showToast: false});
+            // console.log("click totast");
+          }}
+        >
+          <img
+            src={Toast}
             style={{
-              padding: "16px",
-              overflow: "hidden"
+              width: "120%"
             }}
-            frameOverflow="visible"
-            cellSpacing={30}
-            slideWidth={1}
-            infinite
-            // autoplay
-          >
-            {this.currentPointInfo.map((item) => {
-              console.log("item:");
-              console.log(item);
-              return (
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%"
-                  }}
-                  key={item.id}
-                >
+          />
+        </div>
+        <img
+          src={ToastYes}
+          style={{
+            zIndex: "2",
+            position: "fixed",
+            marginLeft: "45%",
+            marginTop: "78%",
+            width: "30%",
+            display: this.state.showToast ? "block" : "none"
+          }}
+          onClick={(e) => {
+            this.setState({showToast: false});
+            // console.log("click totast");
+          }}
+        />
+        <div>
+          <WingBlank>
+            <Carousel
+              removeClippedSubviews={false}
+              style={{
+                padding: "16px",
+                overflow: "hidden"
+              }}
+              frameOverflow="visible"
+              cellSpacing={30}
+              slideWidth={1}
+              infinite
+              // autoplay
+            >
+              {this.currentPointInfo.map((item) => {
+                // console.log("item:");
+                //console.log(item);
+                return (
                   <div
                     style={{
-                      width: "50%",
-                      textAlign: "center",
-                      marginTop: "30%",
-                      marginLeft: "25%",
-                      height: "100px"
+                      width: "100%",
+                      height: "100%"
                     }}
+                    key={item.id}
                   >
-                    {item.tips}
-                  </div>
-
-                  <div>
-                    <img
-                      style={{width: "20%"}}
-                      src={RED_POINT_IMG}
-                      onLoad={() => {
-                        // fire window resize event to change height
-                        window.dispatchEvent(new Event("resize"));
-                        this.setState({imgHeight: "auto"});
+                    <div
+                      style={{
+                        textAlign: "center",
+                        fontSize: "28px",
+                        opacity: "0.6",
+                        marginTop: "25%"
                       }}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      style={{width: "50%"}}
-                      src={RED_BUTTON_IMG}
-                      onLoad={() => {
-                        // fire window resize event to change height
-                        window.dispatchEvent(new Event("resize"));
-                        this.setState({imgHeight: "auto"});
+                    >
+                      提示
+                    </div>
+                    <div
+                      style={{
+                        width: "60%",
+                        textAlign: "center",
+                        marginTop: "15%",
+                        marginLeft: "25%",
+                        height: "80px",
+                        fontSize: "20px",
+                        opacity: "0.7"
                       }}
-                    />
+                    >
+                      {item.tips}
+                    </div>
+                    <div style={{marginTop: "20%"}}>
+                      <div>
+                        <img
+                          style={{width: "20%", marginLeft: "45%"}}
+                          src={RED_POINT_IMG}
+                          onLoad={() => {
+                            // fire window resize event to change height
+                            window.dispatchEvent(new Event("resize"));
+                            this.setState({imgHeight: "auto"});
+                          }}
+                        />
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          this.handleButtonClick(item);
+                        }}
+                      >
+                        <img
+                          style={{
+                            width: "50%",
+                            marginLeft: "30%",
+                            marginTop: "8%"
+                          }}
+                          src={RED_BUTTON_IMG}
+                          onLoad={() => {
+                            // fire window resize event to change height
+                            window.dispatchEvent(new Event("resize"));
+                            this.setState({imgHeight: "auto"});
+                          }}
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </Carousel>
-        </WingBlank>
+                );
+              })}
+            </Carousel>
+          </WingBlank>
+        </div>
       </div>
     );
   }
@@ -138,4 +222,16 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(ActivityDetail));
+const mapDispatchToProps = (dispatch) => {
+  const ADetailAction = bindActionCreators(ADetailCreator, dispatch);
+  return {
+    ADetailAction
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ActivityDetail)
+);
