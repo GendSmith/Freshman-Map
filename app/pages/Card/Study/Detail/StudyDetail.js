@@ -21,14 +21,6 @@ class StudyDetail extends React.Component {
     this.pointInfo = this.props.menuReducer.menuRes.pointInfo;
     this.progress = this.props.menuReducer.menuRes.progress;
     this.currentPointInfo = [];
-    let temp = this.pointInfo;
-    for (let i = 0; i < temp.length; i++) {
-      if (temp[i].type == "study") {
-        this.currentPointInfo.push(temp[i]);
-      }
-    }
-    console.log(this.pointInfo);
-    // console.log(progress);
     this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
@@ -74,13 +66,15 @@ class StudyDetail extends React.Component {
   }
 
   componentWillMount() {
-    // let temp = this.pointInfo;
-    // for (let i = 0; i < temp.length; i++) {
-    //   if (temp[i].type == "study") {
-    //     this.currentPointInfo.push(temp[i]);
-    //   }
-    // }
-    // console.log(this.currentPointInfo);
+    let temp = this.pointInfo;
+    let {imgUrl} = this.progress.activity;
+
+    for (let i = 0; i < temp.length; i++) {
+      if (temp[i].type == "study" && imgUrl.indexOf(temp[i].img_url) != -1) {
+        this.currentPointInfo.push(temp[i]);
+      }
+    }
+    console.log(this.currentPointInfo);
   }
 
   componentDidMount() {
@@ -123,7 +117,7 @@ class StudyDetail extends React.Component {
             {item[i].tips}
           </div>
 
-           <div style={{marginTop: "20%"}}>
+          <div style={{marginTop: "20%"}}>
             <div>
               <img
                 style={{width: "20%", marginLeft: "45%"}}
@@ -154,9 +148,7 @@ class StudyDetail extends React.Component {
                 }}
               />
             </div>
-          </div> 
-
-
+          </div>
         </div>
       );
     }

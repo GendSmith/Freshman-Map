@@ -70,8 +70,10 @@ class FamousDetail extends React.Component {
 
   componentWillMount() {
     let temp = this.pointInfo;
+    let {imgUrl} = this.progress.activity;
+
     for (let i = 0; i < temp.length; i++) {
-      if (temp[i].type == "architecture") {
+      if (temp[i].type == "architecture" && imgUrl.indexOf(temp[i].img_url) != -1) {
         this.currentPointInfo.push(temp[i]);
       }
     }

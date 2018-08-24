@@ -69,8 +69,10 @@ class LifeDetail extends React.Component {
 
   componentWillMount() {
     let temp = this.pointInfo;
+    let {imgUrl} = this.progress.activity;
+
     for (let i = 0; i < temp.length; i++) {
-      if (temp[i].type == "life") {
+      if (temp[i].type == "life" && imgUrl.indexOf(temp[i].img_url) != -1) {
         this.currentPointInfo.push(temp[i]);
       }
     }
