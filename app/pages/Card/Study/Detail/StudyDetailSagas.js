@@ -12,7 +12,7 @@ function * fetchADetailSaga(params) {
         yield put(willFetchADetailData());
         const res = yield call (
             fetch,
-            "http:localhost:6700/record",
+            "http:newsysu.cn:6700/record",
             "POST",
             params.payload
         );

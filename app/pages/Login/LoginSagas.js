@@ -12,7 +12,7 @@ function* fetchLoginSaga(params) {
     yield put(willFetchLoginData());
     const message = yield call(
       fetch,
-      "http://localhost:6700/login",
+      "http://newsysu.cn:6700/login",
       "POST",
       params.payload
     );

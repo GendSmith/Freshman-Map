@@ -17,6 +17,7 @@ class FamousDetail extends React.Component {
     this.state = {
       showToast: false
     };
+    this.itemRender = this.itemRender.bind(this);
     console.log(this.props);
     this.pointInfo = this.props.menuReducer.menuRes.pointInfo;
     this.progress = this.props.menuReducer.menuRes.progress;
@@ -87,6 +88,78 @@ class FamousDetail extends React.Component {
     }, 0);
   }
 
+  itemRender() {
+    let itemArray = [];
+    const item = this.currentPointInfo;
+    for (let i = 0; i < item.length; i++) {
+      itemArray.push(
+        <div
+          style={{
+            width: "100%",
+            height: "100%"
+          }}
+          key={item[i].id}
+        >
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "28px",
+              opacity: "0.6",
+              marginTop: "25%"
+            }}
+          >
+            提示
+          </div>
+          <div
+            style={{
+              width: "60%",
+              textAlign: "center",
+              marginTop: "15%",
+              marginLeft: "25%",
+              height: "80px",
+              fontSize: "20px",
+              opacity: "0.7"
+            }}
+          >
+            {item[i].tips}
+          </div>
+          <div style={{marginTop: "20%"}}>
+            <div>
+              <img
+                style={{width: "20%", marginLeft: "45%"}}
+                src={RED_POINT_IMG}
+                onLoad={() => {
+                  // fire window resize event to change height
+                  window.dispatchEvent(new Event("resize"));
+                  this.setState({imgHeight: "auto"});
+                }}
+              />
+            </div>
+            <div
+              onClick={(e) => {
+                this.handleButtonClick(item[i]);
+              }}
+            >
+              <img
+                style={{
+                  width: "50%",
+                  marginLeft: "30%",
+                  marginTop: "8%"
+                }}
+                src={RED_BUTTON_IMG}
+                onLoad={() => {
+                  // fire window resize event to change height
+                  window.dispatchEvent(new Event("resize"));
+                  this.setState({imgHeight: "auto"});
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="activity-detail-page-container">
@@ -127,7 +200,7 @@ class FamousDetail extends React.Component {
         <div>
           <WingBlank>
             <Carousel
-            key={this.currentPointInfo.length}
+              key={this.currentPointInfo.length}
               removeClippedSubviews={false}
               style={{
                 padding: "16px",
@@ -136,78 +209,10 @@ class FamousDetail extends React.Component {
               frameOverflow="visible"
               cellSpacing={30}
               slideWidth={1}
-              //infinite
+              infinite
               //autoplay
             >
-              {this.currentPointInfo.map((item) => {
-                // console.log("item:");
-                //console.log(item);
-                return (
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "100%"
-                    }}
-                    key={item.id}
-                  >
-                    <div
-                      style={{
-                        textAlign: "center",
-                        fontSize: "28px",
-                        opacity: "0.6",
-                        marginTop: "25%"
-                      }}
-                    >
-                      提示
-                    </div>
-                    <div
-                      style={{
-                        width: "60%",
-                        textAlign: "center",
-                        marginTop: "15%",
-                        marginLeft: "25%",
-                        height: "80px",
-                        fontSize: "20px",
-                        opacity: "0.7"
-                      }}
-                    >
-                      {item.tips}
-                    </div>
-                    <div style={{marginTop: "20%"}}>
-                      <div>
-                        <img
-                          style={{width: "20%", marginLeft: "45%"}}
-                          src={RED_POINT_IMG}
-                          onLoad={() => {
-                            // fire window resize event to change height
-                            window.dispatchEvent(new Event("resize"));
-                            this.setState({imgHeight: "auto"});
-                          }}
-                        />
-                      </div>
-                      <div
-                        onClick={(e) => {
-                          this.handleButtonClick(item);
-                        }}
-                      >
-                        <img
-                          style={{
-                            width: "50%",
-                            marginLeft: "30%",
-                            marginTop: "8%"
-                          }}
-                          src={RED_BUTTON_IMG}
-                          onLoad={() => {
-                            // fire window resize event to change height
-                            window.dispatchEvent(new Event("resize"));
-                            this.setState({imgHeight: "auto"});
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+              {this.itemRender}
             </Carousel>
           </WingBlank>
         </div>
