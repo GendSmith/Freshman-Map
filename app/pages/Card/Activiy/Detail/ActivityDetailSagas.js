@@ -1,4 +1,5 @@
 import {take,fork,call,put} from "redux-saga/effects";
+import {HOST_URL} from "../../../../../config/index"
 import {
     FETCH_A_DETAIL_DATA,
     willFetchADetailData,
@@ -12,7 +13,7 @@ function * fetchADetailSaga(params) {
         yield put(willFetchADetailData());
         const res = yield call (
             fetch,
-            "http:newsysu.cn:6700/record",
+            HOST_URL+"/record",
             "POST",
             params.payload
         );

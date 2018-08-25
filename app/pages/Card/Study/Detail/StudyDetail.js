@@ -14,7 +14,8 @@ class StudyDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showToast: false
+      showToast: false,
+      showPointName: false
     };
     this.itemRender = this.itemRender.bind(this);
     console.log(this.props);
@@ -25,6 +26,7 @@ class StudyDetail extends React.Component {
   }
 
   handleButtonClick(item) {
+    let that = this;
     const point = {
       lng: item.lng,
       lat: item.lat
@@ -40,17 +42,19 @@ class StudyDetail extends React.Component {
         if (this.getStatus() == BMAP_STATUS_SUCCESS) {
           const distance = map.getDistance(r.point, point);
           const params = {
-            id: item.id,
+            id: localStorage.getItem("id"),
             type: item.type,
-            pointName: item.img_url,
+            imgUrl: item.img_url,
             lng: item.lng,
             lat: item.lat
           };
-          if (distance < 50) {
-            this.props.ADetailAction.fetchSDetailData(params);
-          } else {
-            //alert 打卡失败
-          }
+          that.props.SDetailAction.fetchSDetailData(params);
+          //this.componentWillMount();
+          // if (distance < 50) {
+          //   this.props.ADetailAction.fetchSDetailData(params);
+          // } else {
+          //   //alert 打卡失败
+          // }
           console.log("distance:" + distance);
           //  alert("您的位置：" + r.point.lng + "," + r.point.lat);
         } else {
@@ -67,10 +71,12 @@ class StudyDetail extends React.Component {
 
   componentWillMount() {
     let temp = this.pointInfo;
-    let {imgUrl} = this.progress.activity;
+    console.log("progerss.study:");
+    console.log(this.progress);
+    let {imgUrl} = this.progress.study;
 
     for (let i = 0; i < temp.length; i++) {
-      if (temp[i].type == "study" && imgUrl.indexOf(temp[i].img_url) != -1) {
+      if (temp[i].type == "study" && imgUrl.indexOf(temp[i].img_url) == -1) {
         this.currentPointInfo.push(temp[i]);
       }
     }
@@ -84,6 +90,20 @@ class StudyDetail extends React.Component {
   itemRender() {
     let itemArray = [];
     const item = this.currentPointInfo;
+    if (item.length == 0) {
+      return (
+        <div
+          style={{
+            textAlign: "center",
+            fontSize: "28px",
+            opacity: "0.6",
+            marginTop: "18%"
+          }}
+        >
+          已完成
+        </div>
+      );
+    }
     for (let i = 0; i < item.length; i++) {
       itemArray.push(
         <div
@@ -149,6 +169,37 @@ class StudyDetail extends React.Component {
               />
             </div>
           </div>
+          <div style={{marginBottom: "30px", height: "50px"}}>
+            <div
+              style={{
+                marginTop: "20px",
+                fontSize: "20px",
+                textAlign: "center",
+                display: this.state.showPointName ? "block" : "none"
+              }}
+            >
+              {item[i].name}
+            </div>
+            <div
+              onLoad={() => {
+                // fire window resize event to change height
+                window.dispatchEvent(new Event("resize"));
+                this.setState({imgHeight: "auto"});
+              }}
+              style={{
+                textDecoration: "underline",
+                textAlign: "center",
+                marginTop: "30px"
+              }}
+              onClick={(e) => {
+                this.setState({
+                  showPointName: true
+                });
+              }}
+            >
+              （ 实在不知道？戳这里 ）
+            </div>
+          </div>
         </div>
       );
     }
@@ -212,6 +263,11 @@ class StudyDetail extends React.Component {
               slideWidth={1}
               infinite
               // autoplay
+              afterChange={() => {
+                this.setState({
+                  showPointName: false
+                });
+              }}
             >
               {this.itemRender()}
             </Carousel>

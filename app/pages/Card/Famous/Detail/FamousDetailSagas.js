@@ -1,22 +1,23 @@
 import {take,fork,call,put} from "redux-saga/effects";
+import {HOST_URL} from "../../../../../config/index";
 import {
-    FETCH_A_DETAIL_DATA,
-    willFetchADetailData,
-    didFetchADetailData
+    FETCH_F_DETAIL_DATA,
+    willFetchFDetailData,
+    didFetchFDetailData
 } from "./FamousDetailActions"
 
 import fetch from "../../../../api/fetch";
 
-function * fetchADetailSaga(params) {
+function * fetchFDetailSaga(params) {
     try {
-        yield put(willFetchADetailData());
+        yield put(willFetchFDetailData());
         const res = yield call (
             fetch,
-            "http:newsysu.cn:6700/record",
+            HOST_URL+"/record",
             "POST",
             params.payload
         );
-        yield put(didFetchADetailData(res));
+        yield put(didFetchFDetailData(res));
     } catch(err) {
         console.log(err);
     }
@@ -24,8 +25,8 @@ function * fetchADetailSaga(params) {
 
 export function* watchFDetailSaga() {
     while(1) {
-        const payload = yield take(FETCH_A_DETAIL_DATA);
-        yield fork(fetchADetailSaga,payload);
+        const payload = yield take(FETCH_F_DETAIL_DATA);
+        yield fork(fetchFDetailSaga,payload);
     }
 }
 

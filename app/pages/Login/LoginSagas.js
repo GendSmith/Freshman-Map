@@ -1,4 +1,5 @@
 import {take, fork, call, put} from "redux-saga/effects";
+import {HOST_URL} from "../../../config/index"
 import {
   FETCH_LOGIN_DATA,
   willFetchLoginData,
@@ -12,7 +13,7 @@ function* fetchLoginSaga(params) {
     yield put(willFetchLoginData());
     const message = yield call(
       fetch,
-      "http://newsysu.cn:6700/login",
+      HOST_URL+"/login",
       "POST",
       params.payload
     );

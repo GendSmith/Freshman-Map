@@ -1,4 +1,5 @@
 import {take, fork, call, put} from "redux-saga/effects";
+import {HOST_URL} from "../../../config/index"
 import {
   FETCH_MENU_DATA,
   willFetchMenuData,
@@ -12,7 +13,7 @@ function* fetchMenuSaga(params) {
     yield put(willFetchMenuData());
     const message = yield call(
       fetch,
-      "http://newsysu.cn:6700/point",
+      HOST_URL+"/point",
       "POST",
       params.payload
     );

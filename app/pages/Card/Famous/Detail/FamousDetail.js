@@ -15,7 +15,8 @@ class FamousDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showToast: false
+      showToast: false,
+      showPointName:false
     };
     this.itemRender = this.itemRender.bind(this);
     console.log(this.props);
@@ -28,6 +29,7 @@ class FamousDetail extends React.Component {
   }
 
   handleButtonClick(item) {
+    let that = this;
     const point = {
       lng: item.lng,
       lat: item.lat
@@ -43,17 +45,19 @@ class FamousDetail extends React.Component {
         if (this.getStatus() == BMAP_STATUS_SUCCESS) {
           const distance = map.getDistance(r.point, point);
           const params = {
-            id: item.id,
+            id: localStorage.getItem("id"),
             type: item.type,
-            pointName: item.img_url,
+            imgUrl: item.img_url,
             lng: item.lng,
             lat: item.lat
           };
-          if (distance < 50) {
-            this.props.ADetailAction.fetchFDetailData(params);
-          } else {
-            //alert 打卡失败
-          }
+          that.props.FDetailAction.fetchFDetailData(params);
+          //this.componentWillMount();
+          // if (distance < 50) {
+          //   this.props.ADetailAction.fetchSDetailData(params);
+          // } else {
+          //   //alert 打卡失败
+          // }
           console.log("distance:" + distance);
           //  alert("您的位置：" + r.point.lng + "," + r.point.lat);
         } else {
@@ -70,10 +74,10 @@ class FamousDetail extends React.Component {
 
   componentWillMount() {
     let temp = this.pointInfo;
-    let {imgUrl} = this.progress.activity;
+    let {imgUrl} = this.progress.architecture;
 
     for (let i = 0; i < temp.length; i++) {
-      if (temp[i].type == "architecture" && imgUrl.indexOf(temp[i].img_url) != -1) {
+      if (temp[i].type == "architecture" && imgUrl.indexOf(temp[i].img_url) == -1) {
         this.currentPointInfo.push(temp[i]);
       }
     }
@@ -107,7 +111,7 @@ class FamousDetail extends React.Component {
               textAlign: "center",
               fontSize: "28px",
               opacity: "0.6",
-              marginTop: "25%"
+              marginTop: "18%"
             }}
           >
             提示
@@ -157,9 +161,42 @@ class FamousDetail extends React.Component {
               />
             </div>
           </div>
-        </div>
+          <div style={{marginBottom: "30px", height: "50px"}}>
+            <div
+              style={{
+                marginTop: "20px",
+                fontSize: "20px",
+                textAlign: "center",
+                display: this.state.showPointName ? "block" : "none"
+              }}
+            >
+              {item[i].name}
+            </div>
+            <div
+              onLoad={() => {
+                // fire window resize event to change height
+                window.dispatchEvent(new Event("resize"));
+                this.setState({imgHeight: "auto"});
+              }}
+              style={{
+                textDecoration: "underline",
+                textAlign: "center",
+                marginTop: "30px"
+              }}
+              onClick={(e) => {
+                this.setState({
+                  showPointName: true
+                });
+              }}
+            >
+              （ 实在不知道？戳这里 ）
+            </div>
+          </div>
+        
+</div>
       );
     }
+    return itemArray;
   }
 
   render() {
@@ -202,6 +239,11 @@ class FamousDetail extends React.Component {
         <div>
           <WingBlank>
             <Carousel
+             afterChange={() => {
+              this.setState({
+                showPointName: false
+              });
+            }}
               key={this.currentPointInfo.length}
               removeClippedSubviews={false}
               style={{
@@ -214,7 +256,7 @@ class FamousDetail extends React.Component {
               infinite
               //autoplay
             >
-              {this.itemRender}
+              {this.itemRender()}
             </Carousel>
           </WingBlank>
         </div>
