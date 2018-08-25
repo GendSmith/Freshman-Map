@@ -1,11 +1,11 @@
-.activity-detail-page-container {
+.famous-detail-page-container {
     height: 100%;
-    width: 108%;
-    margin: 0 -20px 0 -20px;
+    width: 100%;
+    margin: 0 0 0 0;
     position: absolute;
     top: 0px;
     bottom: 0px;
-    background-image: url("../../../../assets/img/Common/bg4.png");
+    background-image: url("../../../../assets/img/Common/bg3.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }

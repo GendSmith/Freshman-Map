@@ -201,7 +201,7 @@ class FamousDetail extends React.Component {
 
   render() {
     return (
-      <div className="activity-detail-page-container">
+      <div className="famous-detail-page-container">
         <div
           style={{
             position: "fixed",
@@ -211,6 +211,7 @@ class FamousDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
+            this.props.history.push("/card/famous/intro");
             // console.log("click totast");
           }}
         >
@@ -233,6 +234,7 @@ class FamousDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
+            this.props.history.push("/card/famous/intro");
             // console.log("click totast");
           }}
         />

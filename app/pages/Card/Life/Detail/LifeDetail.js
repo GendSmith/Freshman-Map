@@ -217,7 +217,7 @@ class LifeDetail extends React.Component {
 
   render() {
     return (
-      <div className="activity-detail-page-container">
+      <div className="life-detail-page-container">
         <div
           style={{
             position: "fixed",
@@ -227,6 +227,7 @@ class LifeDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
+            this.props.history.push("/card/life/intro");
             // console.log("click totast");
           }}
         >
@@ -249,6 +250,7 @@ class LifeDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
+            this.props.history.push("/card/life/intro");
             // console.log("click totast");
           }}
         />

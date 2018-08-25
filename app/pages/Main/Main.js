@@ -13,7 +13,11 @@ import ActivityDetail from "../Card/Activiy/Detail/ActivityDetail";
 import StudyDetail from "../Card/Study/Detail/StudyDetail";
 import FamousDetail from "../Card/Famous/Detail/FamousDetail";
 import LifeDetail from "../Card/Life/Detail/LifeDetail";
-
+import ActivityIntro from "../Card/Activiy/Detail/ActivityIntro";
+import LifeIntro from "../Card/Life/Detail/LifeIntro";
+import FamousIntro from "../Card/Famous/Detail/FamousIntro";
+import StudyIntro from "../Card/Study/Detail/StudyIntro";
+ 
 class Main extends React.Component {
   render() {
     return (
@@ -29,11 +33,18 @@ class Main extends React.Component {
           <Route exact path="/card/study/detail" component={StudyDetail} />
           <Route exact path="/card/activity/detail" component={ActivityDetail} />
 
+          <Route exact path="/card/life/intro" component={LifeIntro} />
+          <Route exact path="/card/famous/intro" component={FamousIntro} />
+          <Route exact path="/card/study/intro" component={StudyIntro} />
+          <Route exact path="/card/activity/intro" component={ActivityIntro} />
+
+
           <Route exact path="/card/life" component={Life} />
           <Route exact path="/card/famous" component={Famous} />
           <Route exact path="/card/study" component={Study} />
           <Route exact path="/card/activity" component={Activity} />
         
+
         </Switch>
       </div>
     );

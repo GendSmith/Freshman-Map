@@ -226,6 +226,7 @@ class ActivityDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
+            this.props.history.push("/card/activity/intro");
             // console.log("click totast");
           }}
         >
@@ -248,6 +249,7 @@ class ActivityDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
+            this.props.history.push("/card/activity/intro");
             // console.log("click totast");
           }}
         />
