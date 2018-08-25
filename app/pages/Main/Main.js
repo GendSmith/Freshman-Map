@@ -17,7 +17,8 @@ import ActivityIntro from "../Card/Activiy/Detail/ActivityIntro";
 import LifeIntro from "../Card/Life/Detail/LifeIntro";
 import FamousIntro from "../Card/Famous/Detail/FamousIntro";
 import StudyIntro from "../Card/Study/Detail/StudyIntro";
- 
+import End from "../End/End";
+
 class Main extends React.Component {
   render() {
     return (
@@ -44,7 +45,7 @@ class Main extends React.Component {
           <Route exact path="/card/study" component={Study} />
           <Route exact path="/card/activity" component={Activity} />
         
-
+          <Route exact path="/end" component={End} />
         </Switch>
       </div>
     );
