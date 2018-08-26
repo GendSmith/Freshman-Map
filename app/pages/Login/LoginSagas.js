@@ -1,5 +1,5 @@
 import {take, fork, call, put} from "redux-saga/effects";
-import {HOST_URL} from "../../../config/index"
+import {HOST_URL} from "../../../config/index";
 import {
   FETCH_LOGIN_DATA,
   willFetchLoginData,
@@ -13,16 +13,21 @@ function* fetchLoginSaga(params) {
     yield put(willFetchLoginData());
     const message = yield call(
       fetch,
-      HOST_URL+"/login",
+      HOST_URL + "/login",
       "POST",
       params.payload
     );
     console.log(message);
-    if(message.CODE==1000){
-      alert("找不到此用户～")
+    if (message.CODE == 1000) {
+      alert("找不到此用户～");
     }
-    if(message.CODE==1001) {
-      alert("输入信息有误，估计是学号姓名或者学院输错了Orz")
+    if (message.CODE == 1001) {
+      alert("输入信息有误，估计是学号姓名或者学院输错了Orz");
+    }
+    if (message.CODE == 200) {
+      console.log();
+      localStorage.setItem("id", params.payload.schoolID);
+      localStorage.setItem("college", params.payload.college);
     }
     yield put(didFetchLoginData(message));
   } catch (err) {

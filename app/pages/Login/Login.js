@@ -32,7 +32,7 @@ class Login extends React.Component {
       //console.log("登录成功");
       this.props.loginReducer.loginRes = {};
       this.props.history.push("/menu");
-    } 
+    }
     return (
       <div className="page-container">
         <img

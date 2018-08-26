@@ -1,5 +1,5 @@
 import {take, fork, call, put} from "redux-saga/effects";
-import {HOST_URL} from "../../../config/index"
+import {HOST_URL} from "../../../config/index";
 import {
   FETCH_AUTH_DATA,
   willFetchAuthData,
@@ -11,9 +11,9 @@ function* fetchAuthSaga() {
   try {
     console.log("call fetchauthsaga");
     yield put(willFetchAuthData());
-    const message = yield call(fetch, HOST_URL+"/check", "GET");
+    const message = yield call(fetch, HOST_URL + "/check", "GET");
     console.log(message);
-    if(message.payload,CODE==200){
+    if ((message.payload, CODE == 200)) {
       localStorage.setItem("id", message[0].id);
       localStorage.setItem("college", message[0].college);
     }
