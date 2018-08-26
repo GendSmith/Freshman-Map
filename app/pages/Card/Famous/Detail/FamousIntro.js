@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {IMG_URL} from "../../../../../config/index";
 import BACK_IMG from "../../../../assets/img//Success/5bg_photo.png";
+import NEXT_BTN from "../../../../assets/img/Success/5btn_next.png";
 import "./Detail.css";
 class Intro extends React.Component {
   constructor(props) {
@@ -48,6 +49,21 @@ class Intro extends React.Component {
           <div style={{marginLeft:"20px",marginRight:"20px",marginTop:"20px"}}>
             介绍：
           </div>
+        </div>
+        <div
+          onClick={(e) => {
+            this.props.history.push("/menu");
+          }}
+        >
+          <img
+            src={NEXT_BTN}
+            style={{
+              position: "fixed",
+              marginTop: "150%",
+              width: "40%",
+              marginLeft: "30%"
+            }}
+          />
         </div>
       </div>
     );
