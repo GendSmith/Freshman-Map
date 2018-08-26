@@ -16,7 +16,12 @@ class ActivityDetail extends React.Component {
     super(props);
     this.state = {
       showToast: false,
-      showPointName: false
+      showPointName: false,
+      currentPointInfo: {
+        name: "",
+        intro: "",
+        imgUrl: ""
+      }
     };
     this.itemRender = this.itemRender.bind(this);
     console.log(this.props);
@@ -51,7 +56,19 @@ class ActivityDetail extends React.Component {
             lng: item.lng,
             lat: item.lat
           };
+          console.log("funcking adetaildata params:");
+          console.log(params);
           that.props.ADetailAction.fetchADetailData(params);
+          const temp = {
+            name: item.name,
+            intro: item.introduction,
+            imgUrl: item.img_url
+          };
+          console.log("temp pointinfo");
+          console.log(temp);
+          that.setState({
+            currentPointInfo: temp
+          });
           //this.componentWillMount();
           // if (distance < 50) {
           //   this.props.ADetailAction.fetchSDetailData(params);
@@ -100,6 +117,9 @@ class ActivityDetail extends React.Component {
     if (item.length == 0) {
       return (
         <div
+          onClick={(e) => {
+            this.props.history.push("/menu");
+          }}
           style={{
             textAlign: "center",
             fontSize: "28px",
@@ -108,6 +128,9 @@ class ActivityDetail extends React.Component {
           }}
         >
           已完成
+          <br />
+          <br />
+          点击返回菜单页面
         </div>
       );
     }
@@ -136,7 +159,7 @@ class ActivityDetail extends React.Component {
               textAlign: "center",
               marginTop: "15%",
               marginLeft: "25%",
-              height: "120px",
+              height: "80px",
               fontSize: "20px",
               opacity: "0.7"
             }}
@@ -144,7 +167,7 @@ class ActivityDetail extends React.Component {
             {item[i].tips}
           </div>
 
-          <div style={{marginTop: "10%"}}>
+          <div style={{marginTop: "20%"}}>
             <div>
               <img
                 style={{width: "20%", marginLeft: "45%"}}
@@ -256,7 +279,11 @@ class ActivityDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
-            this.props.history.push("/card/famous/intro");
+            //this.props.history.push("/card/activity/intro");
+            this.props.history.push({
+              pathname: "/card/activity/intro",
+              state: this.state.currentPointInfo
+            });
             // console.log("click totast");
           }}
         />
@@ -273,7 +300,10 @@ class ActivityDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
-            this.props.history.push("/card/famous/intro");
+            this.props.history.push({
+              pathname: "/card/activity/intro",
+              state: this.state.currentPointInfo
+            });
             // console.log("click totast");
           }}
         >

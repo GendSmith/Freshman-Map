@@ -15,7 +15,12 @@ class StudyDetail extends React.Component {
     super(props);
     this.state = {
       showToast: false,
-      showPointName: false
+      showPointName: false,
+      currentPointInfo: {
+        name: "",
+        intro: "",
+        imgUrl: ""
+      }
     };
     this.itemRender = this.itemRender.bind(this);
     console.log(this.props);
@@ -49,6 +54,16 @@ class StudyDetail extends React.Component {
             lat: item.lat
           };
           that.props.SDetailAction.fetchSDetailData(params);
+          const temp = {
+            name: item.name,
+            intro: item.introduction,
+            imgUrl: item.img_url
+          };
+          console.log("temp pointinfo");
+          console.log(temp);
+          that.setState({
+            currentPointInfo: temp
+          });
           //this.componentWillMount();
           // if (distance < 50) {
           //   this.props.ADetailAction.fetchSDetailData(params);
@@ -93,14 +108,20 @@ class StudyDetail extends React.Component {
     if (item.length == 0) {
       return (
         <div
+          onClick={(e) => {
+            this.props.history.push("/menu");
+          }}
           style={{
             textAlign: "center",
             fontSize: "28px",
             opacity: "0.6",
-            marginTop: "18%"
+            marginTop: "25%"
           }}
         >
           已完成
+          <br />
+          <br />
+          点击返回菜单页面
         </div>
       );
     }
@@ -118,7 +139,7 @@ class StudyDetail extends React.Component {
               textAlign: "center",
               fontSize: "28px",
               opacity: "0.6",
-              marginTop: "25%"
+              marginTop: "18%"
             }}
           >
             提示
@@ -215,14 +236,14 @@ class StudyDetail extends React.Component {
   render() {
     return (
       <div className="study-detail-page-container">
-               <img
+        <img
           src={Toast}
           style={{
             width: "60%",
             marginLeft: "20%",
             position: "fixed",
             marginTop: "30%",
-            zIndex:"1",
+            zIndex: "1",
             display: this.state.showToast ? "block" : "none"
           }}
         />
@@ -232,9 +253,9 @@ class StudyDetail extends React.Component {
             position: "fixed",
             marginLeft: "32%",
             marginTop: "60%",
-            textAlign:"center",
-            fontSize:"16px",
-            color:"white",
+            textAlign: "center",
+            fontSize: "16px",
+            color: "white",
             display: this.state.showToast ? "block" : "none"
           }}
         >
@@ -255,12 +276,15 @@ class StudyDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
-            this.props.history.push("/card/famous/intro");
+            // this.props.history.push("/card/study/intro");
+            this.props.history.push({
+              pathname: "/card/study/intro",
+              state: this.state.currentPointInfo
+            });
             // console.log("click totast");
           }}
         />
-        
-        
+
         <div
           style={{
             zIndex: "4",
@@ -268,19 +292,22 @@ class StudyDetail extends React.Component {
             marginLeft: "30%",
             marginTop: "95%",
             width: "40%",
-            textAlign:"center",
+            textAlign: "center",
             display: this.state.showToast ? "block" : "none"
           }}
           onClick={(e) => {
             this.setState({showToast: false});
-            this.props.history.push("/card/famous/intro");
+            //this.props.history.push("/card/study/intro");
+            this.props.history.push({
+              pathname: "/card/study/intro",
+              state: this.state.currentPointInfo
+            });
             // console.log("click totast");
           }}
         >
           确定
         </div>
-       
-       
+
         <div>
           <WingBlank>
             <Carousel

@@ -16,7 +16,12 @@ class LifeDetail extends React.Component {
     super(props);
     this.state = {
       showToast: false,
-      showPointName: false
+      showPointName: false,
+      currentPointInfo: {
+        name: "",
+        intro: "",
+        imgUrl: ""
+      }
     };
     this.itemRender = this.itemRender.bind(this);
     console.log(this.props);
@@ -52,6 +57,16 @@ class LifeDetail extends React.Component {
             lat: item.lat
           };
           that.props.LDetailAction.fetchLDetailData(params);
+          const temp = {
+            name: item.name,
+            intro: item.introduction,
+            imgUrl: item.img_url
+          };
+          console.log("temp pointinfo");
+          console.log(temp);
+          that.setState({
+            currentPointInfo: temp
+          });
           //this.componentWillMount();
           // if (distance < 50) {
           //   this.props.ADetailAction.fetchSDetailData(params);
@@ -100,14 +115,20 @@ class LifeDetail extends React.Component {
     if (item.length == 0) {
       return (
         <div
+          onClick={(e) => {
+            this.props.history.push("/menu");
+          }}
           style={{
             textAlign: "center",
             fontSize: "28px",
             opacity: "0.6",
-            marginTop: "18%"
+            marginTop: "25%"
           }}
         >
           已完成
+          <br />
+          <br />
+          点击返回菜单页面
         </div>
       );
     }
@@ -256,7 +277,11 @@ class LifeDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
-            this.props.history.push("/card/famous/intro");
+            this.props.history.push({
+              pathname: "/card/life/intro",
+              state: this.state.currentPointInfo
+            });
+            // this.props.history.push("/card/life/intro");
             // console.log("click totast");
           }}
         />
@@ -273,7 +298,11 @@ class LifeDetail extends React.Component {
           }}
           onClick={(e) => {
             this.setState({showToast: false});
-            this.props.history.push("/card/famous/intro");
+            //this.props.history.push("/card/life/intro");
+            this.props.history.push({
+              pathname: "/card/life/intro",
+              state: this.state.currentPointInfo
+            });
             // console.log("click totast");
           }}
         >
