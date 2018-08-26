@@ -17,7 +17,13 @@ function* fetchLoginSaga(params) {
       "POST",
       params.payload
     );
-
+    console.log(message);
+    if(message.CODE==1000){
+      alert("找不到此用户～")
+    }
+    if(message.CODE==1001) {
+      alert("输入信息有误，估计是学号姓名或者学院输错了Orz")
+    }
     yield put(didFetchLoginData(message));
   } catch (err) {
     console.log(err);
