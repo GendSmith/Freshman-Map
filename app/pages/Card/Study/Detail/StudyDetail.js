@@ -5,8 +5,8 @@ import {Carousel, WingBlank} from "antd-mobile";
 import {bindActionCreators} from "redux";
 import RED_POINT_IMG from "../../../../assets/img/Task/4locat.png";
 import RED_BUTTON_IMG from "../../../../assets/img/Task/4btn_locat.png";
-import Toast from "../../../../assets/img/Toast/定位成功.png";
-import ToastYes from "../../../../assets/img/Toast/是.png";
+import Toast from "../../../../assets/img/Toast/box.png";
+import ToastYes from "../../../../assets/img/Toast/button.png";
 import SDetailActionCreator from "./StudyDetailActions";
 import "./Detail.css";
 
@@ -215,42 +215,72 @@ class StudyDetail extends React.Component {
   render() {
     return (
       <div className="study-detail-page-container">
-        <div
+               <img
+          src={Toast}
           style={{
+            width: "60%",
+            marginLeft: "20%",
             position: "fixed",
-            zIndex: "1",
             marginTop: "30%",
+            zIndex:"1",
             display: this.state.showToast ? "block" : "none"
           }}
-          onClick={(e) => {
-            this.setState({showToast: false});
-            this.props.history.push("/card/study/intro");
-            // console.log("click totast");
+        />
+        <div
+          style={{
+            zIndex: "1",
+            position: "fixed",
+            marginLeft: "32%",
+            marginTop: "60%",
+            textAlign:"center",
+            fontSize:"16px",
+            color:"white",
+            display: this.state.showToast ? "block" : "none"
           }}
         >
-          <img
-            src={Toast}
-            style={{
-              width: "120%"
-            }}
-          />
+          恭喜你
+          <br />
+          点亮了一个新地点
         </div>
+
         <img
           src={ToastYes}
           style={{
             zIndex: "2",
             position: "fixed",
-            marginLeft: "45%",
-            marginTop: "78%",
+            marginLeft: "35%",
+            marginTop: "94%",
             width: "30%",
             display: this.state.showToast ? "block" : "none"
           }}
           onClick={(e) => {
             this.setState({showToast: false});
-            this.props.history.push("/card/study/intro");
+            this.props.history.push("/card/famous/intro");
             // console.log("click totast");
           }}
         />
+        
+        
+        <div
+          style={{
+            zIndex: "4",
+            position: "fixed",
+            marginLeft: "30%",
+            marginTop: "95%",
+            width: "40%",
+            textAlign:"center",
+            display: this.state.showToast ? "block" : "none"
+          }}
+          onClick={(e) => {
+            this.setState({showToast: false});
+            this.props.history.push("/card/famous/intro");
+            // console.log("click totast");
+          }}
+        >
+          确定
+        </div>
+       
+       
         <div>
           <WingBlank>
             <Carousel
