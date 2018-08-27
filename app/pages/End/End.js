@@ -11,7 +11,8 @@ class End extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rank: localStorage.getItem("rank")
+      rank: localStorage.getItem("rank"),
+      college: localStorage.getItem(college)
     };
     this.name = localStorage.getItem("name");
     console.log("this.rank" + this.state.rank);
@@ -20,14 +21,14 @@ class End extends React.Component {
     console.log("componentwillmount");
     console.log(localStorage.getItem("id"));
     const params = {
-        id:localStorage.getItem("id")
-    }
+      id: localStorage.getItem("id")
+    };
     this.props.rankAction.fetchRankData(params);
   }
 
   render() {
     const {rankRes} = this.props.rankReducer;
-    console.log("reakRes:")
+    console.log("reakRes:");
     console.log(rankRes);
     return (
       <div>
@@ -51,7 +52,9 @@ class End extends React.Component {
           >
             <div style={{color: "white"}}>
               {this.name}:<br />
-              恭喜你成为第{this.state.rank}个点亮心灵地图的人！
+              恭喜你成为第
+              {this.state.rank}
+              个点亮心灵地图的人！
             </div>
             <img
               src={UP}
@@ -68,7 +71,13 @@ class End extends React.Component {
           }}
         >
           <div style={{color: "white"}}>
-            请凭此截图于9月10号前到xxx处领取对应的奖励～
+            请凭此截图于9月17号前到
+            {this.state.college == "物理学院"
+              ? "十友堂101"
+              : this.state.college == "药学院"
+                ? "图书馆"
+                : "新政楼"}
+            处领取对应的奖励～
           </div>
           <img
             src={DOWN}
