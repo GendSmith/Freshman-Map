@@ -4,7 +4,8 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import title from "../../assets/img/Login/1title.png";
-import btnok from "../../assets/img/Login/1btn_ok.png";
+import btnok from "../../assets/img/Login/1btn_login.png";
+
 import btntask from "../../assets/img/Login/1btn_task.png";
 import "./Login.css";
 import loginActionCreator from "./LoginActions";
