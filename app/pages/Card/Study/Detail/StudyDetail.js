@@ -139,7 +139,7 @@ class StudyDetail extends React.Component {
               textAlign: "center",
               fontSize: "28px",
               opacity: "0.6",
-              marginTop: "18%"
+              marginTop: "10%"
             }}
           >
             提示
@@ -148,7 +148,7 @@ class StudyDetail extends React.Component {
             style={{
               width: "70%",
               textAlign: "center",
-              marginTop: "15%",
+              marginTop: "10%",
               marginLeft: "15%",
               height: "80px",
               fontSize: "20px",
@@ -158,10 +158,10 @@ class StudyDetail extends React.Component {
             {item[i].tips}
           </div>
 
-          <div style={{marginTop: "20%"}}>
+          <div style={{marginTop: "13%"}}>
             <div>
               <img
-                style={{width: "20%", marginLeft: "45%"}}
+                style={{width: "20%", marginLeft: "40%"}}
                 src={RED_POINT_IMG}
                 onLoad={() => {
                   // fire window resize event to change height
@@ -178,7 +178,7 @@ class StudyDetail extends React.Component {
               <img
                 style={{
                   width: "50%",
-                  marginLeft: "30%",
+                  marginLeft: "25%",
                   marginTop: "8%"
                 }}
                 src={RED_BUTTON_IMG}
