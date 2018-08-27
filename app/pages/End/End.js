@@ -12,7 +12,7 @@ class End extends React.Component {
     super(props);
     this.state = {
       rank: localStorage.getItem("rank"),
-      college: localStorage.getItem(college)
+      college: localStorage.getItem("college")
     };
     this.name = localStorage.getItem("name");
     console.log("this.rank" + this.state.rank);
