@@ -68,7 +68,7 @@ class StudyDetail extends React.Component {
               showToast: true,
               toDetail:true
             });
-            this.props.ADetailAction.fetchSDetailData(params);
+            this.props.SDetailAction.fetchSDetailData(params);
           } else {
             alert("打卡失败，你和目的地的距离是"+ parseInt(distance) + "米");
             that.props.history.push("/menu");
