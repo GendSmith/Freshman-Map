@@ -136,6 +136,8 @@ class FamousDetail extends React.Component {
           <br />
           <br />
           点击返回菜单页面
+          <br />
+          <br />
         </div>
       );
     }
@@ -205,16 +207,6 @@ class FamousDetail extends React.Component {
           </div>
           <div style={{marginBottom: "30px", height: "50px"}}>
             <div
-              style={{
-                marginTop: "20px",
-                fontSize: "20px",
-                textAlign: "center",
-                display: this.state.showPointName ? "block" : "none"
-              }}
-            >
-              {item[i].name}
-            </div>
-            <div
               onLoad={() => {
                 // fire window resize event to change height
                 window.dispatchEvent(new Event("resize"));
@@ -233,6 +225,17 @@ class FamousDetail extends React.Component {
             >
               （ 实在不知道？戳这里 ）
             </div>
+
+            <div
+              style={{
+                marginTop: "20px",
+                fontSize: "20px",
+                textAlign: "center",
+                display: this.state.showPointName ? "block" : "none"
+              }}
+            >
+              {item[i].name}
+            </div>
           </div>
         </div>
       );
@@ -246,10 +249,10 @@ class FamousDetail extends React.Component {
         <img
           src={Toast}
           style={{
-            width: "60%",
-            marginLeft: "20%",
+            width: "70%",
+            marginLeft: "15%",
             position: "fixed",
-            marginTop: "30%",
+            marginTop: "25%",
             zIndex: "1",
             display: this.state.showToast ? "block" : "none"
           }}
@@ -326,12 +329,12 @@ class FamousDetail extends React.Component {
               key={this.currentPointInfo.length}
               removeClippedSubviews={false}
               style={{
-                padding: "16px",
+             //   padding: "16px",
                 overflow: "hidden"
               }}
               frameOverflow="visible"
-              cellSpacing={30}
-              slideWidth={1}
+              cellSpacing={0}
+            //  slideWidth={1}
               infinite
               //autoplay
             >
