@@ -85,7 +85,7 @@ class Login extends React.Component {
         <div>
           <img
             src={btnok}
-            style={{...styles.button, marginLeft: "27%"}}
+            style={{...styles.button, marginLeft: "22.5%"}}
             onClick={() => {
               console.log(this.state);
               this.onSubmit();
