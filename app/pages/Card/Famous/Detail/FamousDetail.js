@@ -72,7 +72,7 @@ class FamousDetail extends React.Component {
           });
 
           if (distance < 150) {
-            this.setState({
+            that.setState({
               showToast: true,
               toDetail: true
             });

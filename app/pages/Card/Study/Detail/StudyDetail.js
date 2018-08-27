@@ -64,7 +64,7 @@ class StudyDetail extends React.Component {
             currentPointInfo: temp
           });
           if (distance < 150) {
-            this.setState({
+            that.setState({
               showToast: true,
               toDetail:true
             });
