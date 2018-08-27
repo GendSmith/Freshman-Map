@@ -68,7 +68,7 @@ class Intro extends React.Component {
             src={NEXT_BTN}
             style={{
               position: "fixed",
-              marginTop: "120%",
+              marginTop: "110%",
               width: "40%",
               marginLeft: "30%"
             }}
