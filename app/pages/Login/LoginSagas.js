@@ -26,8 +26,10 @@ function* fetchLoginSaga(params) {
     }
     if (message.CODE == 200) {
       console.log();
+      localStorage.setItem("name",params.payload.name);
       localStorage.setItem("id", params.payload.schoolID);
       localStorage.setItem("college", params.payload.college);
+      localStorage.setItem("rank",message.rank);
     }
     yield put(didFetchLoginData(message));
   } catch (err) {

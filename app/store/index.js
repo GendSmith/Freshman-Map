@@ -10,9 +10,10 @@ import SDetailReducer from "../pages/Card/Study/Detail/StudyDetailReducer";
 import {watchSDetailSaga} from "../pages/Card/Study/Detail/StudyDetailSagas";
 import LDetailReducer from "../pages/Card/Life/Detail/LifeDetailReducer";
 import {watchLDetailSaga} from "../pages/Card/Life/Detail/LifeDetailSagas";
-
 import FDetailReducer from "../pages/Card/Famous/Detail/FamousDetailReducer";
 import {watchFDetailSaga} from "../pages/Card/Famous/Detail/FamousDetailSagas";
+import rankReducer from "../pages/End/EndReducer";
+import {watchRankSaga} from "../pages/End/EndSagas";
 
 import Store from "./store";
 
@@ -23,7 +24,8 @@ const reducers = {
   ADetailReducer,
   SDetailReducer,
   LDetailReducer,
-  FDetailReducer
+  FDetailReducer,
+  rankReducer
 };
 
 const sagas = [
@@ -33,7 +35,8 @@ const sagas = [
   watchADetailSaga,
   watchSDetailSaga,
   watchLDetailSaga,
-  watchFDetailSaga
+  watchFDetailSaga,
+  watchRankSaga
 ];
 
 export default (initialState = {}) => () =>

@@ -2,9 +2,33 @@ import React from "react";
 import BACK from "../../assets/img/End/图层.png";
 import UP from "../../assets/img/End/奖牌.png";
 import DOWN from "../../assets/img/End/礼物.png";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+
+import rankActionCreator from "./EndActions";
 
 class End extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rank: localStorage.getItem("rank")
+    };
+    this.name = localStorage.getItem("name");
+    console.log("this.rank" + this.state.rank);
+  }
+  componentWillMount() {
+    console.log("componentwillmount");
+    console.log(localStorage.getItem("id"));
+    const params = {
+        id:localStorage.getItem("id")
+    }
+    this.props.rankAction.fetchRankData(params);
+  }
+
   render() {
+    const {rankRes} = this.props.rankReducer;
+    console.log("reakRes:")
+    console.log(rankRes);
     return (
       <div>
         <div>
@@ -26,9 +50,8 @@ class End extends React.Component {
             }}
           >
             <div style={{color: "white"}}>
-              name:
-              <br />
-              恭喜你成为第xxx个点亮心灵地图的人！
+              {this.name}:<br />
+              恭喜你成为第{this.state.rank}个点亮心灵地图的人！
             </div>
             <img
               src={UP}
@@ -56,4 +79,22 @@ class End extends React.Component {
     );
   }
 }
-export default End;
+
+const mapStateToProps = (state) => {
+  const {rankReducer} = state;
+  return {
+    rankReducer
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  const rankAction = bindActionCreators(rankActionCreator, dispatch);
+  return {
+    rankAction
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(End);

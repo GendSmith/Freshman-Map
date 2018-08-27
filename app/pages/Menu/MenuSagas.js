@@ -3,8 +3,7 @@ import {HOST_URL} from "../../../config/index";
 import {
   FETCH_MENU_DATA,
   willFetchMenuData,
-  didFetchMenuData,
-  FETCH_RANK_DATA
+  didFetchMenuData
 } from "./MenuActions";
 import fetch from "../../api/fetch";
 
@@ -65,6 +64,7 @@ function finishAll(message) {
     state.finishLife == "true"
   ) {
     console.log("全部打卡完成");
+    localStorage.setItem("finishAll",true);
     window.location.href = "/#/end";
     //this.props.history.push("/end");
   }
@@ -87,13 +87,7 @@ function* fetchMenuSaga(params) {
   }
 }
 
-function* fetchRankSaga(params) {
-  try {
-    const res = yield call(fetch, HOST_URL + "/rank", "POST", params.payload);
-  } catch (err) {
-    console.log(err);
-  }
-}
+
 
 export function* watchMenuSaga() {
   while (1) {
@@ -102,9 +96,4 @@ export function* watchMenuSaga() {
   }
 }
 
-export function* watchRankSaga() {
-  while (1) {
-    const payload = yield take(FETCH_RANK_DATA);
-    yield fork(fetchRankSaga, payload);
-  }
-}
+
