@@ -16,6 +16,7 @@ class StudyDetail extends React.Component {
     this.state = {
       showToast: false,
       showPointName: false,
+      toDetail:false,
       currentPointInfo: {
         name: "",
         intro: "",
@@ -36,9 +37,7 @@ class StudyDetail extends React.Component {
       lng: item.lng,
       lat: item.lat
     };
-    this.setState({
-      showToast: true
-    });
+    
     const BMap = window.BMap;
     const map = new BMap.Map("");
     const geolocation = new BMap.Geolocation();
@@ -64,12 +63,16 @@ class StudyDetail extends React.Component {
           that.setState({
             currentPointInfo: temp
           });
-          //this.componentWillMount();
-          // if (distance < 50) {
-          //   this.props.ADetailAction.fetchSDetailData(params);
-          // } else {
-          //   //alert 打卡失败
-          // }
+          if (distance < 80) {
+            this.setState({
+              showToast: true,
+              toDetail:true
+            });
+            this.props.ADetailAction.fetchSDetailData(params);
+          } else {
+            alert("打卡失败，你和目的地的距离是"+ parseInt(distance) + "米");
+            that.props.history.push("/menu");
+          }
           console.log("distance:" + distance);
           //  alert("您的位置：" + r.point.lng + "," + r.point.lat);
         } else {

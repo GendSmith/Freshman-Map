@@ -17,6 +17,7 @@ class ActivityDetail extends React.Component {
     this.state = {
       showToast: false,
       showPointName: false,
+      toDetail:false,
       currentPointInfo: {
         name: "",
         intro: "",
@@ -39,9 +40,7 @@ class ActivityDetail extends React.Component {
       lng: item.lng,
       lat: item.lat
     };
-    this.setState({
-      showToast: true
-    });
+    
     const BMap = window.BMap;
     const map = new BMap.Map("");
     const geolocation = new BMap.Geolocation();
@@ -56,27 +55,27 @@ class ActivityDetail extends React.Component {
             lng: item.lng,
             lat: item.lat
           };
-          console.log("funcking adetaildata params:");
-          console.log(params);
-          that.props.ADetailAction.fetchADetailData(params);
-          const temp = {
-            name: item.name,
-            intro: item.introduction,
-            imgUrl: item.img_url
-          };
-          console.log("temp pointinfo");
-          console.log(temp);
-          that.setState({
-            currentPointInfo: temp
-          });
-          //this.componentWillMount();
-          // if (distance < 50) {
-          //   this.props.ADetailAction.fetchSDetailData(params);
-          // } else {
-          //   //alert 打卡失败
-          // }
-          console.log("distance:" + distance);
-          //  alert("您的位置：" + r.point.lng + "," + r.point.lat);
+          if (distance < 80) {
+            that.setState({
+              showToast: true,
+              toDetail:true
+            });
+            this.props.ADetailAction.fetchSDetailData(params);
+            const temp = {
+              name: item.name,
+              intro: item.introduction,
+              imgUrl: item.img_url
+            };
+            console.log("temp pointinfo");
+            that.setState({
+              currentPointInfo: temp
+            });
+          } else {
+            alert("打卡失败，你和目的地的距离是"+ parseInt(distance) + "米");
+            that.props.history.push("/menu");
+          }
+         // that.props.ADetailAction.fetchADetailData(params);
+          
         } else {
           if (this.getStatus == BMAP_STATUS_PERMISSION_DENIED) {
             alert("请开启位置权限～");
@@ -303,11 +302,17 @@ class ActivityDetail extends React.Component {
             display: this.state.showToast ? "block" : "none"
           }}
           onClick={(e) => {
-            this.setState({showToast: false});
-            this.props.history.push({
-              pathname: "/card/activity/intro",
-              state: this.state.currentPointInfo
-            });
+            if(this.state.toDetail==true) {
+              this.setState({showToast: false});
+              this.props.history.push({
+                pathname: "/card/activity/intro",
+                state: this.state.currentPointInfo
+              });
+            }
+            else {
+              this.props.history.push("/menu");
+            }
+            
             // console.log("click totast");
           }}
         >
@@ -317,7 +322,6 @@ class ActivityDetail extends React.Component {
         <div>
           <WingBlank>
             <Carousel
-            
               afterChange={() => {
                 this.setState({
                   showPointName: false
@@ -325,12 +329,12 @@ class ActivityDetail extends React.Component {
               }}
               removeClippedSubviews={false}
               style={{
-               // padding: "16px",
+                // padding: "16px",
                 overflow: "hidden"
               }}
               frameOverflow="visible"
               cellSpacing={0}
-             // slideWidth={1}
+              // slideWidth={1}
               infinite
               // autoplay
             >

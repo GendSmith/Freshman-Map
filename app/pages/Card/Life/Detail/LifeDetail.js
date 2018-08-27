@@ -17,6 +17,7 @@ class LifeDetail extends React.Component {
     this.state = {
       showToast: false,
       showPointName: false,
+      toDetail: false,
       currentPointInfo: {
         name: "",
         intro: "",
@@ -39,9 +40,9 @@ class LifeDetail extends React.Component {
       lng: item.lng,
       lat: item.lat
     };
-    this.setState({
-      showToast: true
-    });
+    // this.setState({
+    //   showToast: true
+    // });
     const BMap = window.BMap;
     const map = new BMap.Map("");
     const geolocation = new BMap.Geolocation();
@@ -56,7 +57,7 @@ class LifeDetail extends React.Component {
             lng: item.lng,
             lat: item.lat
           };
-          that.props.LDetailAction.fetchLDetailData(params);
+          // that.props.LDetailAction.fetchLDetailData(params);
           const temp = {
             name: item.name,
             intro: item.introduction,
@@ -67,12 +68,17 @@ class LifeDetail extends React.Component {
           that.setState({
             currentPointInfo: temp
           });
-          //this.componentWillMount();
-          // if (distance < 50) {
-          //   this.props.ADetailAction.fetchSDetailData(params);
-          // } else {
-          //   //alert 打卡失败
-          // }
+
+          if (distance < 50) {
+            this.setState({
+              showToast: true,
+              toDetail:true
+            });
+            this.props.ADetailAction.fetchSDetailData(params);
+          } else {
+            alert("打卡失败，你和目的地的距离是" + parseInt(distance) + "米");
+            that.props.history.push("/menu");
+          }
           console.log("distance:" + distance);
           //  alert("您的位置：" + r.point.lng + "," + r.point.lat);
         } else {
@@ -200,7 +206,6 @@ class LifeDetail extends React.Component {
             </div>
           </div>
           <div style={{marginBottom: "30px", height: "50px"}}>
-
             <div
               onLoad={() => {
                 // fire window resize event to change height
@@ -230,7 +235,6 @@ class LifeDetail extends React.Component {
             >
               {item[i].name}
             </div>
-
           </div>
         </div>
       );
@@ -323,12 +327,12 @@ class LifeDetail extends React.Component {
               }}
               removeClippedSubviews={false}
               style={{
-            //    padding: "16px",
+                //    padding: "16px",
                 overflow: "hidden"
               }}
               frameOverflow="visible"
               cellSpacing={0}
-           //   slideWidth={1}
+              //   slideWidth={1}
               infinite
               // autoplay
             >
