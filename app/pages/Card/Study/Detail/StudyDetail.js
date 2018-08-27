@@ -52,14 +52,14 @@ class StudyDetail extends React.Component {
             lng: item.lng,
             lat: item.lat
           };
-          that.props.SDetailAction.fetchSDetailData(params);
+         // that.props.SDetailAction.fetchSDetailData(params);
           const temp = {
             name: item.name,
             intro: item.introduction,
             imgUrl: item.img_url
           };
-          console.log("temp pointinfo");
-          console.log(temp);
+          // console.log("temp pointinfo");
+          // console.log(temp);
           that.setState({
             currentPointInfo: temp
           });

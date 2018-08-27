@@ -60,7 +60,7 @@ class ActivityDetail extends React.Component {
               showToast: true,
               toDetail:true
             });
-            this.props.ADetailAction.fetchSDetailData(params);
+            this.props.ADetailAction.fetchADetailData(params);
             const temp = {
               name: item.name,
               intro: item.introduction,

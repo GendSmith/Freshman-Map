@@ -76,7 +76,7 @@ class FamousDetail extends React.Component {
               showToast: true,
               toDetail: true
             });
-            this.props.ADetailAction.fetchSDetailData(params);
+            this.props.ADetailAction.fetchFDetailData(params);
           } else {
             alert("打卡失败，你和目的地的距离是" + parseInt(distance) + "米");
             that.props.history.push("/menu");
