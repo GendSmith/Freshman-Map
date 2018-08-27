@@ -19,7 +19,7 @@ class Intro extends React.Component {
       <div className="activity-detail-page-container">
         <div
           style={{
-            fontSize: "18px",
+            fontSize: "25px",
             opacity: "0.6",
             marginTop: "30px",
             textAlign: "center"
@@ -33,14 +33,14 @@ class Intro extends React.Component {
             position: "fixed",
             width: "75%",
             zIndex: "0",
-            top: "20%",
+            top: "13%",
             marginLeft: "12.5%"
           }}
         />
         <div
           style={{
             position: "fixed",
-            top: "20%",
+            top: "13%",
             marginLeft: "12.5%",
             width: "75%"
           }}
@@ -68,7 +68,7 @@ class Intro extends React.Component {
             src={NEXT_BTN}
             style={{
               position: "fixed",
-              marginTop: "130%",
+              marginTop: "120%",
               width: "40%",
               marginLeft: "30%"
             }}

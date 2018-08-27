@@ -38,10 +38,10 @@ class Login extends React.Component {
       <div className="page-container">
         <img
           src={title}
-          style={{width: "50%", marginLeft: "25%", marginTop: "50%"}}
+          style={{width: "60%", marginLeft: "20%", marginTop: "38%"}}
         />
         <div style={{marginTop: "20px"}}>
-          <div style={{width: "60%", marginLeft: "27%"}}>
+          <div style={{width: "70%", marginLeft: "22%"}}>
             <p style={{color: "white"}}>
               姓名{" "}
               <input
@@ -54,7 +54,7 @@ class Login extends React.Component {
               />
             </p>
           </div>
-          <div style={{width: "60%", marginLeft: "27%"}}>
+          <div style={{width: "70%", marginLeft: "22%"}}>
             <p style={{color: "white"}}>
               学号 {"   "}
               <input
@@ -69,7 +69,7 @@ class Login extends React.Component {
               />
             </p>
           </div>
-          <div style={{width: "60%", marginLeft: "27%"}}>
+          <div style={{width: "70%", marginLeft: "22%"}}>
             <p style={{color: "white"}}>
               学院 {"   "}
               <input
@@ -108,7 +108,7 @@ const styles = {
   input: {
     marginTop: "15px",
     backgroundColor: "#ffff",
-    width: "80%",
+    width: "60%",
     height: "20px",
     borderRadius: "5px",
     opacity: "0.7"

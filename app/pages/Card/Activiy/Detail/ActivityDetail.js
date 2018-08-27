@@ -155,10 +155,10 @@ class ActivityDetail extends React.Component {
           </div>
           <div
             style={{
-              width: "60%",
+              width: "70%",
               textAlign: "center",
               marginTop: "15%",
-              marginLeft: "25%",
+              marginLeft: "15%",
               height: "80px",
               fontSize: "20px",
               opacity: "0.7"
