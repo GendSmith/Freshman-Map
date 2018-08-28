@@ -163,7 +163,7 @@ class LifeDetail extends React.Component {
             style={{
               width: "65%",
               whiteSpace:"pre-line",
-              textAlign: "left",
+              textAlign: "center",
               marginTop: "10%",
               marginLeft: "17.5%",
               height: "80px",

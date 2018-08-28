@@ -172,7 +172,7 @@ class FamousDetail extends React.Component {
           <div
             style={{
               width: "65%",
-              textAlign: "left",
+              textAlign: "center",
               marginTop: "10%",
               marginLeft: "17.5%",
               height: "80px",
