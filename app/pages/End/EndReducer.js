@@ -1,8 +1,7 @@
-import { DID_FETCH_RANK_DATA} from "./EndActions";
+import {DID_FETCH_RANK_DATA} from "./EndActions";
 let INITIAL_STATE = {
   rankRes: {}
 };
-
 
 const rankReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {

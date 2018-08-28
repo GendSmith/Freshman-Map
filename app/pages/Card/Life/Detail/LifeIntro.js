@@ -78,7 +78,7 @@ class Intro extends React.Component {
             src={NEXT_BTN}
             style={{
               position: "fixed",
-              marginTop: "115%",
+              marginTop: "120%",
               width: "40%",
               marginLeft: "30%"
             }}
@@ -97,7 +97,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
- // const ADetailAction = bindActionCreators(ADetailCreator, dispatch);
+  // const ADetailAction = bindActionCreators(ADetailCreator, dispatch);
   const menuAction = bindActionCreators(MenuActionCreator, dispatch);
   return {
     //ADetailAction,
@@ -111,4 +111,3 @@ export default withRouter(
     mapDispatchToProps
   )(Intro)
 );
-

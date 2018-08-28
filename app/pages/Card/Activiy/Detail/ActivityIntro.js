@@ -71,8 +71,8 @@ class Intro extends React.Component {
         </div>
         <div
           onClick={(e) => {
-           // this.props.history.push("/menu");
-           // console.log("middle ")
+            // this.props.history.push("/menu");
+            // console.log("middle ")
             this.props.history.push("/card/activity/detail");
           }}
         >
@@ -80,7 +80,7 @@ class Intro extends React.Component {
             src={NEXT_BTN}
             style={{
               position: "fixed",
-              marginTop: "115%",
+              marginTop: "120%",
               width: "40%",
               marginLeft: "30%"
             }}
@@ -91,7 +91,6 @@ class Intro extends React.Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   const {menuReducer} = state;
   return {
@@ -100,7 +99,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
- // const ADetailAction = bindActionCreators(ADetailCreator, dispatch);
+  // const ADetailAction = bindActionCreators(ADetailCreator, dispatch);
   const menuAction = bindActionCreators(MenuActionCreator, dispatch);
   return {
     //ADetailAction,
@@ -114,5 +113,3 @@ export default withRouter(
     mapDispatchToProps
   )(Intro)
 );
-
-

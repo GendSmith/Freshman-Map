@@ -13,6 +13,4 @@ const menuReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-
-
 export default menuReducer;

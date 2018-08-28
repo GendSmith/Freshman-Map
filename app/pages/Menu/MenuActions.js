@@ -19,5 +19,5 @@ export const didFetchMenuData = (params) => ({
 export default {
   fetchMenuData,
   willFetchMenuData,
-  didFetchMenuData,
+  didFetchMenuData
 };

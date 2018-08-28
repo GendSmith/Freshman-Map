@@ -37,17 +37,17 @@ class End extends React.Component {
             src={BACK}
             style={{
               position: "fixed",
-              top: "20%",
+              top: "15%",
               width: "70%",
-              marginLeft: "13.5%"
+              marginLeft: "15%"
             }}
           />
           <div
             style={{
               position: "fixed",
-              top: "27%",
+              top: "22%",
               width: "60%",
-              marginLeft: "17.5%"
+              marginLeft: "20%"
             }}
           >
             <div style={{color: "white"}}>
@@ -65,9 +65,9 @@ class End extends React.Component {
         <div
           style={{
             position: "fixed",
-            top: "55%",
+            top: "50%",
             width: "60%",
-            marginLeft: "17.5%"
+            marginLeft: "20%"
           }}
         >
           <div style={{color: "white"}}>

@@ -8,8 +8,10 @@ import RED_BUTTON_IMG from "../../../../assets/img/Task/4btn_locat.png";
 import Toast from "../../../../assets/img/Toast/box.png";
 import ToastYes from "../../../../assets/img/Toast/button.png";
 import ADetailCreator from "./ActivityDetailActions";
-import {DISTANCE} from "../../../../../config/index"
+import {DISTANCE} from "../../../../../config/index";
 import MenuActionCreator from "../../../Menu/MenuActions";
+import return_img from "../../../../assets/img/Common/0btn_return.png";
+import RETURN_IMG from "../../../../assets/img/return_img1.png";
 import "./Detail.css";
 
 class ActivityDetail extends React.Component {
@@ -18,7 +20,7 @@ class ActivityDetail extends React.Component {
     this.state = {
       showToast: false,
       showPointName: false,
-      toDetail:false,
+      toDetail: false,
       currentPointInfo: {
         name: "",
         intro: "",
@@ -49,7 +51,7 @@ class ActivityDetail extends React.Component {
       lng: item.lng,
       lat: item.lat
     };
-    
+
     const BMap = window.BMap;
     const map = new BMap.Map("");
     const geolocation = new BMap.Geolocation();
@@ -67,7 +69,7 @@ class ActivityDetail extends React.Component {
           if (distance < 150000000000000000) {
             that.setState({
               showToast: true,
-              toDetail:true
+              toDetail: true
             });
             that.props.ADetailAction.fetchADetailData(params);
             const temp = {
@@ -80,11 +82,10 @@ class ActivityDetail extends React.Component {
               currentPointInfo: temp
             });
           } else {
-            alert("打卡失败，你和目的地的距离是"+ parseInt(distance) + "米");
+            alert("打卡失败，你和目的地的距离是" + parseInt(distance) + "米");
             that.props.history.push("/menu");
           }
-         // that.props.ADetailAction.fetchADetailData(params);
-          
+          // that.props.ADetailAction.fetchADetailData(params);
         } else {
           if (this.getStatus == BMAP_STATUS_PERMISSION_DENIED) {
             alert("请开启位置权限～");
@@ -128,17 +129,26 @@ class ActivityDetail extends React.Component {
           onClick={(e) => {
             this.props.history.push("/menu");
           }}
-          style={{
-            textAlign: "center",
-            fontSize: "28px",
-            opacity: "0.6",
-            marginTop: "25%"
-          }}
         >
-          已完成
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "20px",
+              opacity: "0.6",
+              marginTop: "50%"
+            }}
+          >
+            <br />
+            <br />
+            恭喜你,
+            <br />
+            <br />
+            已成功点亮该类别所有地点！
+            <br />
+            <br />
+            <br />
+          </div>
           <br />
-          <br />
-          点击返回菜单页面
           <br />
           <br />
         </div>
@@ -172,7 +182,7 @@ class ActivityDetail extends React.Component {
               height: "80px",
               fontSize: "16px",
               opacity: "0.7",
-              whiteSpace:"pre-line"
+              whiteSpace: "pre-line"
             }}
           >
             {item[i].tips}
@@ -251,7 +261,22 @@ class ActivityDetail extends React.Component {
 
   render() {
     return (
-      <div className="activity-detail-page-container">
+      <div className="activity-detail-page-container" style={{opacity: "2"}}>
+        <div>
+          <img
+            style={{
+              position: "fixed",
+              left: "20px",
+              top: "20px",
+              width: "10%",
+              zIndex: "20"
+            }}
+            src={return_img}
+            onClick={(e) => {
+              this.props.history.push("/menu");
+            }}
+          />
+        </div>
         <img
           src={Toast}
           style={{
@@ -279,7 +304,6 @@ class ActivityDetail extends React.Component {
           <br />
           点亮了一个新地点
         </div>
-
         <img
           src={ToastYes}
           style={{
@@ -300,7 +324,6 @@ class ActivityDetail extends React.Component {
             // console.log("click totast");
           }}
         />
-
         <div
           style={{
             zIndex: "4",
@@ -312,23 +335,21 @@ class ActivityDetail extends React.Component {
             display: this.state.showToast ? "block" : "none"
           }}
           onClick={(e) => {
-            if(this.state.toDetail==true) {
+            if (this.state.toDetail == true) {
               this.setState({showToast: false});
               this.props.history.push({
                 pathname: "/card/activity/intro",
                 state: this.state.currentPointInfo
               });
-            }
-            else {
+            } else {
               this.props.history.push("/menu");
             }
-            
+
             // console.log("click totast");
           }}
         >
           确定
         </div>
-
         <div>
           <WingBlank>
             <Carousel

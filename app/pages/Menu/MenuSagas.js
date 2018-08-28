@@ -55,7 +55,7 @@ function finishAll(message) {
     state.finishLife == "true"
   ) {
     console.log("全部打卡完成");
-    localStorage.setItem("finishAll",true);
+    localStorage.setItem("finishAll", true);
     window.location.href = "/#/end";
     //this.props.history.push("/end");
   }
@@ -78,13 +78,9 @@ function* fetchMenuSaga(params) {
   }
 }
 
-
-
 export function* watchMenuSaga() {
   while (1) {
     const payload = yield take(FETCH_MENU_DATA);
     yield fork(fetchMenuSaga, payload);
   }
 }
-
-

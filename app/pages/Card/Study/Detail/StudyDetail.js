@@ -9,6 +9,8 @@ import Toast from "../../../../assets/img/Toast/box.png";
 import ToastYes from "../../../../assets/img/Toast/button.png";
 import SDetailActionCreator from "./StudyDetailActions";
 import {DISTANCE} from "../../../../../config/index";
+import return_img from "../../../../assets/img/Common/0btn_return.png";
+import RETURN_IMG from "../../../../assets/img/return_img1.png";
 import "./Detail.css";
 
 class StudyDetail extends React.Component {
@@ -17,7 +19,7 @@ class StudyDetail extends React.Component {
     this.state = {
       showToast: false,
       showPointName: false,
-      toDetail:false,
+      toDetail: false,
       currentPointInfo: {
         name: "",
         intro: "",
@@ -38,7 +40,7 @@ class StudyDetail extends React.Component {
       lng: item.lng,
       lat: item.lat
     };
-    
+
     const BMap = window.BMap;
     const map = new BMap.Map("");
     const geolocation = new BMap.Geolocation();
@@ -53,7 +55,7 @@ class StudyDetail extends React.Component {
             lng: item.lng,
             lat: item.lat
           };
-         // that.props.SDetailAction.fetchSDetailData(params);
+          // that.props.SDetailAction.fetchSDetailData(params);
           const temp = {
             name: item.name,
             intro: item.introduction,
@@ -67,11 +69,11 @@ class StudyDetail extends React.Component {
           if (distance < 1500000000000000000) {
             that.setState({
               showToast: true,
-              toDetail:true
+              toDetail: true
             });
             that.props.SDetailAction.fetchSDetailData(params);
           } else {
-            alert("打卡失败，你和目的地的距离是"+ parseInt(distance) + "米");
+            alert("打卡失败，你和目的地的距离是" + parseInt(distance) + "米");
             that.props.history.push("/menu");
           }
           console.log("distance:" + distance);
@@ -115,17 +117,26 @@ class StudyDetail extends React.Component {
           onClick={(e) => {
             this.props.history.push("/menu");
           }}
-          style={{
-            textAlign: "center",
-            fontSize: "28px",
-            opacity: "0.6",
-            marginTop: "25%"
-          }}
         >
-          已完成
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "20px",
+              opacity: "0.6",
+              marginTop: "50%"
+            }}
+          >
+            <br />
+            <br />
+            恭喜你,
+            <br />
+            <br />
+            已成功点亮该类别所有地点！
+            <br />
+            <br />
+            <br />
+          </div>
           <br />
-          <br />
-          点击返回菜单页面
           <br />
           <br />
         </div>
@@ -159,7 +170,7 @@ class StudyDetail extends React.Component {
               height: "80px",
               fontSize: "16px",
               opacity: "0.7",
-              whiteSpace:"pre-line"
+              whiteSpace: "pre-line"
             }}
           >
             {item[i].tips}
@@ -243,6 +254,21 @@ class StudyDetail extends React.Component {
   render() {
     return (
       <div className="study-detail-page-container">
+        <div>
+          <img
+            style={{
+              position: "fixed",
+              left: "20px",
+              top: "20px",
+              width: "10%",
+              zIndex: "20"
+            }}
+            src={return_img}
+            onClick={(e) => {
+              this.props.history.push("/menu");
+            }}
+          />
+        </div>
         <img
           src={Toast}
           style={{
@@ -321,12 +347,12 @@ class StudyDetail extends React.Component {
               removeClippedSubviews={false}
               key={this.currentPointInfo.length}
               style={{
-         //       padding: "16px",
+                //       padding: "16px",
                 overflow: "hidden"
               }}
               frameOverflow="visible"
               cellSpacing={0}
-            //  slideWidth={1}
+              //  slideWidth={1}
               infinite
               // autoplay
               afterChange={() => {

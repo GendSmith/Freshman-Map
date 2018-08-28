@@ -22,12 +22,15 @@ class Study extends React.Component {
           <div>将会是你储备知识的加油站。</div>
         </div>
         <div>
-          <img src = {study_small} style = {{
-            position:"fixed",
-            width:"70%",
-            marginLeft:"15%",
-            marginTop:"60%"
-          }}/>
+          <img
+            src={study_small}
+            style={{
+              position: "fixed",
+              width: "70%",
+              marginLeft: "15%",
+              marginTop: "60%"
+            }}
+          />
         </div>
         <div
           onClick={(e) => {
