@@ -71,7 +71,7 @@ class FamousDetail extends React.Component {
             currentPointInfo: temp
           });
           console.log("DISTANCE"+DISTANCE);
-          if (distance < 150) {
+          if (distance < 1500000000000) {
             that.setState({
               showToast: true,
               toDetail: true
