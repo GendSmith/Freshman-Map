@@ -69,7 +69,7 @@ class LifeDetail extends React.Component {
             currentPointInfo: temp
           });
 
-          if (distance < DISTANCE) {
+          if (distance < 150) {
             that.setState({
               showToast: true,
               toDetail:true

@@ -8,7 +8,7 @@ import RED_BUTTON_IMG from "../../../../assets/img/Task/4btn_locat.png";
 import Toast from "../../../../assets/img/Toast/box.png";
 import ToastYes from "../../../../assets/img/Toast/button.png";
 import ADetailCreator from "./ActivityDetailActions";
-import {DISTANCE} from "../../../../../config/index";
+import {DISTANCE} from "../../../../../config/index"
 import MenuActionCreator from "../../../Menu/MenuActions";
 import "./Detail.css";
 
@@ -64,7 +64,7 @@ class ActivityDetail extends React.Component {
             lng: item.lng,
             lat: item.lat
           };
-          if (distance < DISTANCE) {
+          if (distance < 150) {
             that.setState({
               showToast: true,
               toDetail:true

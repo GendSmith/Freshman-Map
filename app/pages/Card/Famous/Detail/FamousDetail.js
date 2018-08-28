@@ -70,16 +70,19 @@ class FamousDetail extends React.Component {
           that.setState({
             currentPointInfo: temp
           });
-
-          if (distance < DISTANCE) {
+          console.log("DISTANCE"+DISTANCE);
+          if (distance < 150) {
             that.setState({
               showToast: true,
               toDetail: true
             });
             that.props.FDetailAction.fetchFDetailData(params);
           } else {
+            console.log(typeof(DISTANCE));
+            console.log(typeof(distance));
+            console.log("DISTANCE"+DISTANCE);
             alert("打卡失败，你和目的地的距离是" + parseInt(distance) + "米");
-            that.props.history.push("/menu");
+           // that.props.history.push("/menu");
           }
           console.log("distance:" + distance);
           //  alert("您的位置：" + r.point.lng + "," + r.point.lat);

@@ -26,7 +26,7 @@ class Study extends React.Component {
             position:"fixed",
             width:"70%",
             marginLeft:"15%",
-            marginTop:"80%"
+            marginTop:"60%"
           }}/>
         </div>
         <div
