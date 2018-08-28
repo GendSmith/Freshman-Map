@@ -8,6 +8,7 @@ import RED_BUTTON_IMG from "../../../../assets/img/Task/4btn_locat.png";
 import Toast from "../../../../assets/img/Toast/box.png";
 import ToastYes from "../../../../assets/img/Toast/button.png";
 import SDetailActionCreator from "./StudyDetailActions";
+import {DISTANCE} from "../../../../../config/index";
 import "./Detail.css";
 
 class StudyDetail extends React.Component {
@@ -63,12 +64,12 @@ class StudyDetail extends React.Component {
           that.setState({
             currentPointInfo: temp
           });
-          if (distance < 150) {
+          if (distance < DISTANCE) {
             that.setState({
               showToast: true,
               toDetail:true
             });
-            this.props.SDetailAction.fetchSDetailData(params);
+            that.props.SDetailAction.fetchSDetailData(params);
           } else {
             alert("打卡失败，你和目的地的距离是"+ parseInt(distance) + "米");
             that.props.history.push("/menu");
@@ -151,13 +152,14 @@ class StudyDetail extends React.Component {
           </div>
           <div
             style={{
-              width: "70%",
-              textAlign: "center",
+              width: "65%",
+              textAlign: "left",
               marginTop: "10%",
-              marginLeft: "15%",
+              marginLeft: "17.5%",
               height: "80px",
-              fontSize: "20px",
-              opacity: "0.7"
+              fontSize: "16px",
+              opacity: "0.7",
+              whiteSpace:"pre-line"
             }}
           >
             {item[i].tips}

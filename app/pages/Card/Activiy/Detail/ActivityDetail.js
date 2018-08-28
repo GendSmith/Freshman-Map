@@ -8,7 +8,8 @@ import RED_BUTTON_IMG from "../../../../assets/img/Task/4btn_locat.png";
 import Toast from "../../../../assets/img/Toast/box.png";
 import ToastYes from "../../../../assets/img/Toast/button.png";
 import ADetailCreator from "./ActivityDetailActions";
-
+import {DISTANCE} from "../../../../../config/index";
+import MenuActionCreator from "../../../Menu/MenuActions";
 import "./Detail.css";
 
 class ActivityDetail extends React.Component {
@@ -24,10 +25,18 @@ class ActivityDetail extends React.Component {
         imgUrl: ""
       }
     };
+    const params = {
+      id: localStorage.id,
+      college: localStorage.college
+    };
+    this.props.menuAction.fetchMenuData(params);
+    //console.log()
     this.itemRender = this.itemRender.bind(this);
     console.log(this.props);
     this.pointInfo = this.props.menuReducer.menuRes.pointInfo;
     this.progress = this.props.menuReducer.menuRes.progress;
+    console.log("refresh");
+    console.log(this.progress);
     this.currentPointInfo = [];
     console.log(this.pointInfo);
     // console.log(progress);
@@ -55,7 +64,7 @@ class ActivityDetail extends React.Component {
             lng: item.lng,
             lat: item.lat
           };
-          if (distance < 150) {
+          if (distance < DISTANCE) {
             that.setState({
               showToast: true,
               toDetail:true
@@ -156,13 +165,14 @@ class ActivityDetail extends React.Component {
           </div>
           <div
             style={{
-              width: "70%",
-              textAlign: "center",
+              width: "65%",
+              textAlign: "left",
               marginTop: "10%",
-              marginLeft: "15%",
+              marginLeft: "17.5%",
               height: "80px",
-              fontSize: "20px",
-              opacity: "0.7"
+              fontSize: "16px",
+              opacity: "0.7",
+              whiteSpace:"pre-line"
             }}
           >
             {item[i].tips}
@@ -356,8 +366,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   const ADetailAction = bindActionCreators(ADetailCreator, dispatch);
+  const menuAction = bindActionCreators(MenuActionCreator, dispatch);
   return {
-    ADetailAction
+    ADetailAction,
+    menuAction
   };
 };
 

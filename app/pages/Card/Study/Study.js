@@ -3,7 +3,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import "./Study.css";
-
+import study_small from "../../../assets/img/HomePage/3study_small.png";
 class Study extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +20,14 @@ class Study extends React.Component {
           <br />
           <div>课室、图书馆、实验室等，</div>
           <div>将会是你储备知识的加油站。</div>
+        </div>
+        <div>
+          <img src = {study_small} style = {{
+            position:"fixed",
+            width:"70%",
+            marginLeft:"15%",
+            marginTop:"80%"
+          }}/>
         </div>
         <div
           onClick={(e) => {

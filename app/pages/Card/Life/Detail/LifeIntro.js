@@ -1,4 +1,8 @@
 import React from "react";
+import {withRouter} from "react-router-dom";
+import MenuActionCreator from "../../../Menu/MenuActions";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import {IMG_URL} from "../../../../../config/index";
 import BACK_IMG from "../../../../assets/img//Success/5bg_photo.png";
 import NEXT_BTN from "../../../../assets/img/Success/5btn_next.png";
@@ -10,6 +14,11 @@ class Intro extends React.Component {
     //console.log(this.props.location.state);
     this.state = {};
     this.imgUrl = "east/east_study_public_1.png";
+    const params = {
+      id: localStorage.id,
+      college: localStorage.college
+    };
+    this.props.menuAction.fetchMenuData(params);
   }
 
   render() {
@@ -31,18 +40,18 @@ class Intro extends React.Component {
           src={BACK_IMG}
           style={{
             position: "fixed",
-            width: "75%",
+            width: "82%",
             zIndex: "0",
             top: "13%",
-            marginLeft: "12.5%"
+            marginLeft: "9%"
           }}
         />
         <div
           style={{
             position: "fixed",
             top: "13%",
-            marginLeft: "12.5%",
-            width: "75%"
+            marginLeft: "9%",
+            width: "82%"
           }}
         >
           <img
@@ -53,7 +62,7 @@ class Intro extends React.Component {
             }}
           />
           <div
-            style={{marginLeft: "20px", marginRight: "20px", marginTop: "20px"}}
+            style={{marginLeft: "15px", marginRight: "15px", marginTop: "15px"}}
           >
             介绍：
             {this.props.location.state.intro}
@@ -61,14 +70,15 @@ class Intro extends React.Component {
         </div>
         <div
           onClick={(e) => {
-            this.props.history.push("/menu");
+            this.props.history.push("/card/life/detail");
+            //this.props.history.push("/menu");
           }}
         >
           <img
             src={NEXT_BTN}
             style={{
               position: "fixed",
-              marginTop: "110%",
+              marginTop: "120%",
               width: "40%",
               marginLeft: "30%"
             }}
@@ -79,4 +89,26 @@ class Intro extends React.Component {
   }
 }
 
-export default Intro;
+const mapStateToProps = (state) => {
+  const {menuReducer} = state;
+  return {
+    menuReducer
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+ // const ADetailAction = bindActionCreators(ADetailCreator, dispatch);
+  const menuAction = bindActionCreators(MenuActionCreator, dispatch);
+  return {
+    //ADetailAction,
+    menuAction
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Intro)
+);
+

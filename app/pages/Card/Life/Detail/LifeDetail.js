@@ -8,7 +8,7 @@ import RED_BUTTON_IMG from "../../../../assets/img/Task/4btn_locat.png";
 import Toast from "../../../../assets/img/Toast/box.png";
 import ToastYes from "../../../../assets/img/Toast/button.png";
 import LDetailActionCreator from "./LifeDetailActions";
-
+import {DISTANCE} from "../../../../../config/index";
 import "./Detail.css";
 
 class LifeDetail extends React.Component {
@@ -69,7 +69,7 @@ class LifeDetail extends React.Component {
             currentPointInfo: temp
           });
 
-          if (distance < 150) {
+          if (distance < DISTANCE) {
             that.setState({
               showToast: true,
               toDetail:true
@@ -161,12 +161,13 @@ class LifeDetail extends React.Component {
           </div>
           <div
             style={{
-              width: "70%",
-              textAlign: "center",
+              width: "65%",
+              whiteSpace:"pre-line",
+              textAlign: "left",
               marginTop: "10%",
-              marginLeft: "15%",
+              marginLeft: "17.5%",
               height: "80px",
-              fontSize: "20px",
+              fontSize: "16px",
               opacity: "0.7"
             }}
           >

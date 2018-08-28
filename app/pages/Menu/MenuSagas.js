@@ -24,8 +24,8 @@ function isFinish(type, action, imgUrl) {
 function finishAll(message) {
   const action = message.pointInfo;
   const imgUrl = message.progress;
-  console.log("什么鬼");
-  console.log(imgUrl);
+  // console.log("什么鬼");
+  // console.log(imgUrl);
   localStorage.setItem(
     "finishActivity",
     isFinish("activity", action, imgUrl.activity.imgUrl)
@@ -48,15 +48,6 @@ function finishAll(message) {
     finishLife: localStorage.getItem("finishLife"),
     finishFamous: localStorage.getItem("finishFamous")
   };
-  console.log("finish state");
-  console.log(state);
-  console.log("check finish state:");
-  console.log(
-    state.finishActivity == "true" &&
-      state.finishStudy == "true" &&
-      state.finishFamous == "true" &&
-      state.finishLife == "true"
-  );
   if (
     state.finishActivity == "true" &&
     state.finishStudy == "true" &&
