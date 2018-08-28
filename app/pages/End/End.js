@@ -65,7 +65,7 @@ class End extends React.Component {
         <div
           style={{
             position: "fixed",
-            top: "50%",
+            top: "53%",
             width: "60%",
             marginLeft: "20%"
           }}
@@ -75,8 +75,8 @@ class End extends React.Component {
             {this.state.college == "物理学院"
               ? "十友堂101"
               : this.state.college == "药学院"
-                ? "图书馆"
-                : "新政楼"}
+                ? "药学院办公室"
+                : "心理学系办公室"}
             处领取对应的奖励～
           </div>
           <img
