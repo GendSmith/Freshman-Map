@@ -66,7 +66,7 @@ class ActivityDetail extends React.Component {
             lng: item.lng,
             lat: item.lat
           };
-          if (distance < 150000000000000000) {
+          if (distance < 10) {
             that.setState({
               showToast: true,
               toDetail: true
