@@ -188,7 +188,7 @@ class ActivityDetail extends React.Component {
             {item[i].tips}
           </div>
 
-          <div style={{marginTop: "13%"}}>
+          <div style={{marginTop: "10%"}}>
             <div>
               <img
                 style={{width: "20%", marginLeft: "40%"}}
@@ -221,7 +221,7 @@ class ActivityDetail extends React.Component {
             </div>
           </div>
 
-          <div style={{marginBottom: "30px", height: "50px"}}>
+          <div style={{marginBottom: "30px", height: "80px"}}>
             <div
               onLoad={() => {
                 // fire window resize event to change height
@@ -247,6 +247,7 @@ class ActivityDetail extends React.Component {
                 marginTop: "20px",
                 fontSize: "20px",
                 textAlign: "center",
+                height:"30px",
                 display: this.state.showPointName ? "block" : "none"
               }}
             >

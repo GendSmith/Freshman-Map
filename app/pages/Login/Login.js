@@ -13,6 +13,8 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+    };
+    this.inputData = {
       index: "",
       name: "",
       schoolID: "",
@@ -22,7 +24,7 @@ class Login extends React.Component {
     //console.log(this.props);
   }
   onSubmit() {
-    this.props.loginAction.fetchLoginData(this.state);
+    this.props.loginAction.fetchLoginData(this.inputData);
   }
 
   render() {
@@ -47,9 +49,9 @@ class Login extends React.Component {
               <input
                 style={styles.input}
                 type="text"
-                value={this.state.name}
+                //value={this.inputData.name}
                 onChange={(e) => {
-                  this.setState({name: e.target.value});
+                  this.inputData.name = e.target.value;
                 }}
               />
             </p>
@@ -60,11 +62,9 @@ class Login extends React.Component {
               <input
                 style={styles.input}
                 type="text"
-                value={this.state.schoolID}
+                //value={this.inputData.schoolID}
                 onChange={(e) => {
-                  // console.log(e.target.value);
-                  this.setState({schoolID: e.target.value});
-                  //console.log(this.state)
+                  this.inputData.schoolID = e.target.value;
                 }}
               />
             </p>
@@ -74,9 +74,9 @@ class Login extends React.Component {
               学院 {"   "}
               <input
                 style={styles.input}
-                value={this.state.college}
+                //value={this.inputData.college}
                 onChange={(e) => {
-                  this.setState({college: e.target.value});
+                  this.inputData.college = e.target.value;
                 }}
               />
             </p>
@@ -87,7 +87,7 @@ class Login extends React.Component {
             src={btnok}
             style={{...styles.button, marginLeft: "22.5%"}}
             onClick={() => {
-              console.log(this.state);
+              console.log(this.inputData);
               this.onSubmit();
             }}
           />
