@@ -242,7 +242,7 @@ class LifeDetail extends React.Component {
                 marginTop: "20px",
                 fontSize: "20px",
                 textAlign: "center",
-                height:"30px",
+                height: "30px",
                 display: this.state.showPointName ? "block" : "none"
               }}
             >

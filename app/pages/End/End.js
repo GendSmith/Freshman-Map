@@ -71,7 +71,9 @@ class End extends React.Component {
           }}
         >
           <div style={{color: "white"}}>
-            请凭此截图于{this.state.college=="心理学系"?"规定时间":"9月17号码"}前到
+            请凭此截图于
+            {this.state.college == "心理学系" ? "规定时间" : "9月17号码"}
+            前到
             {this.state.college == "物理学院"
               ? "十友堂101"
               : this.state.college == "药学院"

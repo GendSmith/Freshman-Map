@@ -66,7 +66,7 @@ class ActivityDetail extends React.Component {
             lng: item.lng,
             lat: item.lat
           };
-          if (distance < 10) {
+          if (distance < 100) {
             that.setState({
               showToast: true,
               toDetail: true
@@ -247,7 +247,7 @@ class ActivityDetail extends React.Component {
                 marginTop: "20px",
                 fontSize: "20px",
                 textAlign: "center",
-                height:"30px",
+                height: "30px",
                 display: this.state.showPointName ? "block" : "none"
               }}
             >
