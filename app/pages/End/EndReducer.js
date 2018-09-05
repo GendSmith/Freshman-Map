@@ -1,6 +1,8 @@
 import {DID_FETCH_RANK_DATA} from "./EndActions";
 let INITIAL_STATE = {
-  rankRes: {}
+  rankRes: {
+    rank:0
+  }
 };
 
 const rankReducer = (state = INITIAL_STATE, action) => {

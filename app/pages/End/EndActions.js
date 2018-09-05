@@ -8,7 +8,7 @@ export const fetchRankData = (params) => ({
 
 export const didFetchRankData = (params) => ({
   type: DID_FETCH_RANK_DATA,
-  type: params
+  payload: params
 });
 
 export default {

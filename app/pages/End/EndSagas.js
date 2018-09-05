@@ -6,7 +6,7 @@ import fetch from "../../api/fetch";
 function* fetchRankSaga(params) {
   try {
     const res = yield call(fetch, HOST_URL + "/rank", "POST", params.payload);
-    console.log("rand res:");
+    console.log("rank res:");
     console.log(res);
     yield put(didFetchRankData(res));
   } catch (err) {

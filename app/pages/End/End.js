@@ -18,10 +18,11 @@ class End extends React.Component {
     console.log("this.rank" + this.state.rank);
   }
   componentWillMount() {
-    console.log("componentwillmount");
-    console.log(localStorage.getItem("id"));
+    console.log("componentdidmount");
+   // console.log(localStorage.getItem("id"));
     const params = {
-      id: localStorage.getItem("id")
+      id: localStorage.getItem("id"),
+      college:localStorage.getItem("college")
     };
     this.props.rankAction.fetchRankData(params);
   }
@@ -30,6 +31,8 @@ class End extends React.Component {
     const {rankRes} = this.props.rankReducer;
     console.log("reakRes:");
     console.log(rankRes);
+    console.log("reakResRank:");
+    console.log(rankRes.rank)
     return (
       <div>
         <div>
@@ -53,7 +56,8 @@ class End extends React.Component {
             <div style={{color: "white"}}>
               {this.name}:<br />
               恭喜你成为第
-              {this.state.rank}
+              {/* {this.state.rank} */}
+              {this.props.rankReducer.rankRes.rank}
               个点亮心灵地图的人！
             </div>
             <img
@@ -72,7 +76,7 @@ class End extends React.Component {
         >
           <div style={{color: "white"}}>
             请凭此截图于
-            {this.state.college == "心理学系" ? "规定时间" : "9月17号码"}
+            {this.state.college == "心理学系" ? "规定时间" : "9月17号"}
             前到
             {this.state.college == "物理学院"
               ? "十友堂101"
